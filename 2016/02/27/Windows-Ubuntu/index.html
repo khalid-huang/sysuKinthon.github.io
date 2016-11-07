@@ -25,7 +25,7 @@
 找出你的Linux盘在哪个分区以及grub目录位置，使用ls 测试
 12grub rescue&amp;gt; ls     grub rescue&amp;gt;">
 <meta property="og:image" content="http://7xncgn.com1.z0.glb.clouddn.com/16-2-27/73553232.jpg">
-<meta property="og:updated_time" content="2016-11-06T12:23:35.185Z">
+<meta property="og:updated_time" content="2016-11-06T14:49:15.927Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu 与windows双系统记录">
 <meta name="twitter:description" content="安装
@@ -257,7 +257,7 @@
 <li><p>假设我们试到了(hd0,8),成功显示了内容</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">grub rescue&gt; <span class="keyword">set</span>                     //显示<span class="keyword">set</span>的格式，重新设置的格式也要同这个显示的格式相同</span><br><span class="line">grub rescue&gt; <span class="keyword">set</span>  root=(hd0,<span class="number">8</span>)       //括号里为上一步尝试成功的分区</span><br><span class="line">grub rescue&gt; <span class="keyword">set</span>  prefix=(hd0,<span class="number">8</span>)/grub  </span><br><span class="line">grub rescue&gt; insmod /grub/<span class="keyword">normal</span>.<span class="keyword">mod</span> //有时的路径不一定就是grub/<span class="keyword">normal</span>.<span class="keyword">mod</span>，要看<span class="keyword">ls</span> (hd0,<span class="number">8</span>)/grub的显示结果,如果显示没有<span class="keyword">normal</span>.<span class="keyword">mod</span>的话，但是有i386-PC目录的话，那么就写为insmod /grub/i386-PC/<span class="keyword">normal</span>.<span class="keyword">mod</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>到这里应该会应该退出了grub rescue模式，进入了熟悉的grub模式</p>
+<li><p>到这里应该会应该退出了grub rescue模式，进入了熟悉的grub模式；当然了可能还是显示 <code>grub rescue</code>，但是都是输入normal就可以了</p>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grub&gt; <span class="keyword">normal</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>进入linux系统，在终端里面</p>

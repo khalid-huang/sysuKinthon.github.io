@@ -4,21 +4,21 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>ubuntu 15.10双系统 安装 | Kinthon</title>
+  <title>ubuntu 15.10 | Kinthon</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前篇
 系统安装请下载文件（提取码：612d）
 如果安装完后重新进入系统出现了找不到引导而进入了grup rescue的话，参考">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ubuntu 15.10双系统 安装">
+<meta property="og:title" content="ubuntu 15.10">
 <meta property="og:url" content="https://sysukinthon.github.io/2016/06/03/ubuntu-15-10/index.html">
 <meta property="og:site_name" content="Kinthon">
 <meta property="og:description" content="前篇
 系统安装请下载文件（提取码：612d）
 如果安装完后重新进入系统出现了找不到引导而进入了grup rescue的话，参考">
-<meta property="og:updated_time" content="2016-11-06T12:23:35.185Z">
+<meta property="og:updated_time" content="2016-11-07T14:22:48.579Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ubuntu 15.10双系统 安装">
+<meta name="twitter:title" content="ubuntu 15.10">
 <meta name="twitter:description" content="前篇
 系统安装请下载文件（提取码：612d）
 如果安装完后重新进入系统出现了找不到引导而进入了grup rescue的话，参考">
@@ -213,7 +213,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      ubuntu 15.10双系统 安装
+      ubuntu 15.10
     </h1>
   
 
@@ -267,6 +267,12 @@
 </li>
 </ul>
 <h4 id="QQ-安装"><a href="#QQ-安装" class="headerlink" title="QQ 安装"></a>QQ 安装</h4><ul>
+<li>不使用wine<ul>
+<li><a href="http://blog.csdn.net/u012700322/article/details/52712380" target="_blank" rel="external">参考</a></li>
+</ul>
+</li>
+<li><p>使用Wine</p>
+<ul>
 <li><p>安装wine</p>
 <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> install wine</span><br></pre></td></tr></table></figure>
 </li>
@@ -277,6 +283,8 @@
 </li>
 <li><p>安装</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i WineQQ7<span class="number">.8</span>-<span class="number">20151109</span>-Longene.deb</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 </li>
 <li><p>补充</p>
 <ul>
@@ -311,8 +319,46 @@
 <figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">Ctrl</span>+<span class="keyword">b </span>% 新建一个窗口</span><br><span class="line"><span class="label">Ctrl</span>+<span class="keyword">b </span>o 切换窗口</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<h4 id="截图使用"><a href="#截图使用" class="headerlink" title="截图使用"></a>截图使用</h4><ul>
+<li>用内置的命令就可以了，也就是gnome-screenshot; </li>
+<li><p>相关命令如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gnome-screenshot -h</span><br><span class="line">gnome-screenshot -w <span class="comment"># 整个窗口抓取</span></span><br><span class="line">gnome-screenshot <span class="operator">-a</span> <span class="comment"># 区域抓取</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用快捷键</p>
+<ul>
+<li>依次打开 系统设置 &gt; 键盘 &gt; 快捷键 &gt; 自定义快捷键 &gt; +，在【name】输入 screenshot , 【command】输入 gnome-screenshot -a ，点击【apply】确定后，再点击disable 禁用，接着就同时按下 Ctrl+Alt +A 就可以成功设置截图快捷键了。 </li>
+</ul>
+</li>
+</ul>
+<h4 id="sublime安装"><a href="#sublime安装" class="headerlink" title="sublime安装"></a>sublime安装</h4><ul>
+<li>直接命令行安装就可以了<ul>
+<li>命令<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo<span class="instruction"> add-apt-repository </span>ppa:webupd8team/sublime-text-3 </span><br><span class="line">sudo apt-get update </span><br><span class="line">sudo apt-get install sublime-text-installer</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>其默认安装目录为<code>/home/yourname/.config/sublime-text-3</code><ul>
+<li>安装Package Controll</li>
+</ul>
+</li>
+<li><a href="http://my.oschina.net/chinesedragon/blog/160197" target="_blank" rel="external">参考</a><ul>
+<li>中文输入问题</li>
+</ul>
+</li>
+<li><a href="http://www.jianshu.com/p/bf05fb3a4709" target="_blank" rel="external">参考</a><ul>
+<li>插件  </li>
+</ul>
+</li>
+</ul>
 <h4 id="安装pdf阅读器"><a href="#安装pdf阅读器" class="headerlink" title="安装pdf阅读器"></a>安装pdf阅读器</h4><ul>
 <li>推荐福晰阅读器Linux版本</li>
+</ul>
+<h4 id="mendely安装"><a href="#mendely安装" class="headerlink" title="mendely安装"></a>mendely安装</h4><ul>
+<li>是文献管理工具，可以在官网直接下载</li>
+</ul>
+<h4 id="视频播放器"><a href="#视频播放器" class="headerlink" title="视频播放器"></a>视频播放器</h4><ul>
+<li>可以使用VLC 播放器，直接官网下载</li>
 </ul>
 
       
@@ -369,7 +415,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="ubuntu-15-10" data-title="ubuntu 15.10双系统 安装" data-url="https://sysukinthon.github.io/2016/06/03/ubuntu-15-10/"></div>
+	<div class="ds-thread" data-thread-key="ubuntu-15-10" data-title="ubuntu 15.10" data-url="https://sysukinthon.github.io/2016/06/03/ubuntu-15-10/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
