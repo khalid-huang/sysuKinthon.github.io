@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>caffe的lmdb和mnist集详解 | Kinthon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文主要是记录自己在学习caffe的数据库lmdb的过程,会以mnist集的相关代码进行说明；
+
+前提
+要求已经在系统中中成功安装了caffe，可以参考">
+<meta property="og:type" content="article">
+<meta property="og:title" content="caffe的lmdb和mnist集详解">
+<meta property="og:url" content="https://sysukinthon.github.io/2016/10/28/ML-caffe-lmdb/index.html">
+<meta property="og:site_name" content="Kinthon">
+<meta property="og:description" content="本文主要是记录自己在学习caffe的数据库lmdb的过程,会以mnist集的相关代码进行说明；
+
+前提
+要求已经在系统中中成功安装了caffe，可以参考">
+<meta property="og:image" content="http://7xncgn.com1.z0.glb.clouddn.com/16-10-28/52255447.jpg">
+<meta property="og:updated_time" content="2016-11-06T12:23:35.181Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="caffe的lmdb和mnist集详解">
+<meta name="twitter:description" content="本文主要是记录自己在学习caffe的数据库lmdb的过程,会以mnist集的相关代码进行说明；
+
+前提
+要求已经在系统中中成功安装了caffe，可以参考">
+  
+    <link rel="alternative" href="/atom.xml" title="Kinthon" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="canonical" href="https://sysukinthon.github.io/2016/10/28/ML-caffe-lmdb/">
+<script type="text/javascript">
+       var host = "sysukinthon.github.io";
+       if ((host == window.location.host) && (window.location.protocol != "https:"))
+           window.location.protocol = "https";
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Kinthon</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/Web">前端</a></li>
+				        
+							<li><a href="/tags/CG">计算机图形学</a></li>
+				        
+							<li><a href="/tags/ML">机器学习</a></li>
+				        
+							<li><a href="/tags/NN">神经网络</a></li>
+				        
+							<li><a href="/tags/Others">其他</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/sysuKinthon" title="github">github</a>
+					        
+								<a class="douban" target="_blank" href="http://www.cnblogs.com/kinthon/" title="douban">douban</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Browser/" style="font-size: 10px;">Browser</a> <a href="/tags/CG/" style="font-size: 13.33px;">CG</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DL/" style="font-size: 11.67px;">DL</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ML/" style="font-size: 16.67px;">ML</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/NN/" style="font-size: 10px;">NN</a> <a href="/tags/Node/" style="font-size: 15px;">Node</a> <a href="/tags/OpenGL/" style="font-size: 11.67px;">OpenGL</a> <a href="/tags/OpengGL/" style="font-size: 10px;">OpengGL</a> <a href="/tags/Opengl/" style="font-size: 10px;">Opengl</a> <a href="/tags/Others/" style="font-size: 18.33px;">Others</a> <a href="/tags/Project/" style="font-size: 13.33px;">Project</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/基础知识/" style="font-size: 11.67px;">基础知识</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">灵魂之于菩堤，清则静； 追求之于世俗，强则存。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Kinthon</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/avatar.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Kinthon</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/Web">前端</a></li>
+		        
+					<li><a href="/tags/CG">计算机图形学</a></li>
+		        
+					<li><a href="/tags/ML">机器学习</a></li>
+		        
+					<li><a href="/tags/NN">神经网络</a></li>
+		        
+					<li><a href="/tags/Others">其他</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sysuKinthon" title="github">github</a>
+			        
+						<a class="douban" target="_blank" href="http://www.cnblogs.com/kinthon/" title="douban">douban</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-ML-caffe-lmdb" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/28/ML-caffe-lmdb/" class="article-date">
+  	<time datetime="2016-10-28T03:32:05.000Z" itemprop="datePublished">2016-10-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      caffe的lmdb和mnist集详解
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ML/">ML</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>本文主要是记录自己在学习caffe的数据库lmdb的过程,会以mnist集的相关代码进行说明；</p>
+</blockquote>
+<h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><ul>
+<li>要求已经在系统中中成功安装了caffe，可以<a href="http://suanfazu.com/t/ubuntu-14-04-caffe/447" target="_blank" rel="external">参考</a></li>
+</ul>
+<a id="more"></a>
+<h3 id="lmdb的概况"><a href="#lmdb的概况" class="headerlink" title="lmdb的概况"></a>lmdb的概况</h3><ul>
+<li>全称是Lightning Memory-Mapped Database, 是一种闪电型的内存映射数据库，它的文件结构比较简单，就是一个文件夹，里面有一个数据文件和一个锁文件，数据随意复制，随意传输，访问简单，不需要运行单独的数据库管理进程，只要在访问数据的代码里引用LMDB库，访问时给文件路径就可以了</li>
+<li>说了那么多，直接上一个例子吧，<img src="http://7xncgn.com1.z0.glb.clouddn.com/16-10-28/52255447.jpg" alt="例子">，在文件目录中，write.py是用于向lmdb写入zhengfan文件夹图片数据的代码，而read.py是用于向lmdb里面读取数据的代码；lmdb就是我们用write.py运行后得到的文件夹，里面有两个文件，一个data.lmdb,一个clock.lmdb </li>
+</ul>
+<h3 id="lmdb与caffe"><a href="#lmdb与caffe" class="headerlink" title="lmdb与caffe"></a>lmdb与caffe</h3><ul>
+<li>Caffe中DataLayer默认的数据格式是LMDB。许多example中提供的输入数据是LMDB格式。使用extract_features.bin提取特征时支持的输出格式之一也是LMDB。LMDB在Caffe的IO功能中有相当重要的地位</li>
+<li>使用LMDB的优点<ul>
+<li>caffe主要使用LMDB来存放训练和测试用的数据库，还有使用网络提取出的feature,因为数据集的结构很简单，就是矩阵，向量数据，数据之间也没有什么关联，数据内没有复杂的对象结构；所以数据并不复杂，就选用LMDB这个简单的数据库来存放数据</li>
+<li>为什么不直接读取图片数据呢？因为这样可以减少IO开销，直接从硬盘上读取大量小文件的开销是很大的，而LMDB使用内存映射的方式访问文件，使得文件内寻址的开销非常小；数据库单文件还能减少数据集复制和传输过程的开销</li>
+</ul>
+</li>
+<li>caffe中的LMDB数据<ul>
+<li>Caffe并不是把数据集中的向量和矩阵直接放进数据库中的，而是将数据通过caffe.proto（文件路径为 <code>caffe/src/caffe/proto/caffe.proto</code>）<ul>
+<li>代码<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">message</span> <span class="title">Datum</span> </span>&#123;</span><br><span class="line">  <span class="keyword">optional</span> <span class="built_in">int32</span> channels = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">optional</span> <span class="built_in">int32</span> height = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">optional</span> <span class="built_in">int32</span> width = <span class="number">3</span>;</span><br><span class="line">  <span class="comment">// the actual image data, in bytes</span></span><br><span class="line">  <span class="keyword">optional</span> <span class="built_in">bytes</span> data = <span class="number">4</span>;</span><br><span class="line">  <span class="keyword">optional</span> <span class="built_in">int32</span> label = <span class="number">5</span>;</span><br><span class="line">  <span class="comment">// Optionally, the datum could also hold float data.</span></span><br><span class="line">  <span class="keyword">repeated</span> <span class="built_in">float</span> float_data = <span class="number">6</span>;</span><br><span class="line">  <span class="comment">// If true data contains an encoded image that need to be decoded</span></span><br><span class="line">  <span class="keyword">optional</span> <span class="built_in">bool</span> encoded = <span class="number">7</span> [default = <span class="literal">false</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>代码说明<ul>
+<li>关于protobuf的知识，请<a href="http://colobu.com/2015/01/07/Protobuf-language-guide/" target="_blank" rel="external">参考</a></li>
+<li><strong>channels</strong>:表示通道数量，比如RGB图像就是三通道的，灰色图片就是单通道的；在ubuntu下面查看图片的信息可以使用<code>identify</code>命令</li>
+<li><strong>heigth</strong>:表示图片的高</li>
+<li><strong>width</strong>:表示图片的宽</li>
+<li><strong>data</strong>:表示要存放的整数型数据，一般是存放图像数据</li>
+<li><strong>float_data</strong>：表示要存放的浮点型数据，一般是提取到的特征向量</li>
+<li><strong>label</strong>:表示数据的标签类型，是整数型</li>
+<li><strong>encoded</strong>:表示是否需要被解码（里面可能放的是JEPG之类经过编码的数据）</li>
+</ul>
+</li>
+<li>Datum这个数据结构将数据和标签封装在一起，兼容整形和浮点型数据。经过Protobuf编译后，可以在Python和C++中都提供高效的访问。同时Protubuf还为它提供了序列化与反序列化的功能。存放进LMDB的就是Datum序列化生成的字符串。</li>
+</ul>
+<ul>
+<li><p>在caffe下成功运行mnist样例</p>
+<ul>
+<li>代码<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> caffe</span><br><span class="line"><span class="keyword">sh</span> data/mnist/get_mnist.<span class="keyword">sh</span></span><br><span class="line"><span class="keyword">sh</span> examples/mnist/create_mnist.<span class="keyword">sh</span></span><br><span class="line">vi examples/mnist/lenet_solver.prototxt # 修改 solver_mode 为 CPU; 也就是 # uncomment CPU_ONLY := 1</span><br><span class="line">./examples/mnist/train_lenet.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>caffe里面mnist集数据的LMDB存储</p>
+<ul>
+<li>在caffe目录下<ul>
+<li>执行<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./data/mnist/get_mnish.sh #&#22312;&#32447;&#33719;&#21462;mnist&#25968;&#25454;&#21253;&#10;./example/mnist/create_mnist.sh #&#23558;&#19979;&#36733;&#21040;&#30340;&#20108;&#36827;&#21046;mnist&#25968;&#25454;&#36716;&#25442;&#25104;lmdb&#25968;&#25454;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>说明<ul>
+<li>了解mnist数据集</li>
+<li>在第二个执行命令后，我们可以看到在example/mnist目录下多了两个目录，就是我们生成的lmdb文件夹，一个是<code>mnist_test_lmdb</code>,一个是<code>mnist_train_lmdb</code></li>
+<li>我们查看create_mnist.sh文件，可以知道这个shell脚本的过程主要有删除之前之前生成的两个lmdb文件，然后调用caffe/build/examples/mnist目录下的conver_minst_data.bin这个可执行文件，并给其传入3个参数；</li>
+<li>这个二进制文件是怎么生成的，它的源文件在caffe/example/mnist/conver_mnist_data.cpp，我们着重看这个文件<ul>
+<li>函数入口main函数<ul>
+<li>main函数主要是针对传入的参数进行判断，也就是我们在shell文件里面调用bin文件后后面所带的参数，如果argc不等于四个的（argc的值是函数名加上参数的个数），就输出函数的使用方式，关于shell文件里面的<code>--backend=${BACKEND}</code>，我们可以在cpp代码里面看到<code>DEFINE_string(backend, &quot;lmdb&quot;, &quot;The backend for storing the result&quot;);</code>其作用是 使用GFLAGS 工具定义命令行选项 backend, 默认值为 lmdb, 即: —backend=lmdb，这样我们就可以在全局使用一个变量也就是<code>FLAGS_backend</code>它的默认值是lmdb，可能被命令行的<code>--backend=</code>重新赋值；如果argc等于四的话，就将argv[1]（第一个参数），argc[2],argc[3]，还有FLAGS_backend作为参数，调用convert_dataset()函数</li>
+</ul>
+</li>
+<li>conver_dataset函数<ul>
+<li>可以<a href="http://blog.csdn.net/u010167269/article/details/51915512" target="_blank" rel="external">参考</a>,<a href="http://blog.inet198.cn/?u010167269/article/details/51915512" target="_blank" rel="external">参考2</a></li>
+<li>要注意的是，关于里面read这个函数需要读取的大小，需要参考mnist数据集的<a href="http://yann.lecun.com/exdb/mnist/" target="_blank" rel="external">格式</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="最后加上一个python版的lmdb读取与写入"><a href="#最后加上一个python版的lmdb读取与写入" class="headerlink" title="最后加上一个python版的lmdb读取与写入"></a>最后加上一个python版的lmdb读取与写入</h3><ul>
+<li>代码<ul>
+<li>代码来源于 <a href="http://blog.mythsman.com/?p=2591" target="_blank" rel="external">http://blog.mythsman.com/?p=2591</a></li>
+<li><a href="https://github.com/sysuKinthon/machine-learning/tree/master/dataset/lmdb" target="_blank" rel="external">https://github.com/sysuKinthon/machine-learning/tree/master/dataset/lmdb</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ul>
+<li><a href="https://rayz0620.github.io/2015/05/25/lmdb_in_caffe/" target="_blank" rel="external">https://rayz0620.github.io/2015/05/25/lmdb_in_caffe/</a></li>
+<li><a href="http://blog.csdn.net/u010167269/article/details/51915512" target="_blank" rel="external">http://blog.csdn.net/u010167269/article/details/51915512</a></li>
+<li><a href="http://blog.inet198.cn/?u010167269/article/details/51915512" target="_blank" rel="external">总结得很详细</a></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/10/25/CG-python-env-install/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python下包的安装</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="ML-caffe-lmdb" data-title="caffe的lmdb和mnist集详解" data-url="https://sysukinthon.github.io/2016/10/28/ML-caffe-lmdb/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Kinthon
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

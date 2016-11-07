@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>JS 之简单计算器 | Kinthon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="要求
+响应用户对数字和算术操作符按钮的操作，记录并显示用户通过按钮输入的算术表达式（50分）响应用户功能按钮的操作
+用户按下“←”按钮，删除当前算术表达式最后一个字符，并更新显示
+用户按下“CE”按钮，清除当前算术表达式（20分）用户按下“=”按钮，计算当前表达式的结果并显示
+如果，算术表达式非法，弹出警告框提醒用户，并终止计算">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS 之简单计算器">
+<meta property="og:url" content="https://sysukinthon.github.io/2016/02/27/Web-Project-Calculation/index.html">
+<meta property="og:site_name" content="Kinthon">
+<meta property="og:description" content="要求
+响应用户对数字和算术操作符按钮的操作，记录并显示用户通过按钮输入的算术表达式（50分）响应用户功能按钮的操作
+用户按下“←”按钮，删除当前算术表达式最后一个字符，并更新显示
+用户按下“CE”按钮，清除当前算术表达式（20分）用户按下“=”按钮，计算当前表达式的结果并显示
+如果，算术表达式非法，弹出警告框提醒用户，并终止计算">
+<meta property="og:image" content="http://7xncgn.com1.z0.glb.clouddn.com/16-2-27/637943.jpg">
+<meta property="og:updated_time" content="2016-11-06T12:23:35.181Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS 之简单计算器">
+<meta name="twitter:description" content="要求
+响应用户对数字和算术操作符按钮的操作，记录并显示用户通过按钮输入的算术表达式（50分）响应用户功能按钮的操作
+用户按下“←”按钮，删除当前算术表达式最后一个字符，并更新显示
+用户按下“CE”按钮，清除当前算术表达式（20分）用户按下“=”按钮，计算当前表达式的结果并显示
+如果，算术表达式非法，弹出警告框提醒用户，并终止计算">
+  
+    <link rel="alternative" href="/atom.xml" title="Kinthon" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="canonical" href="https://sysukinthon.github.io/2016/02/27/Web-Project-Calculation/">
+<script type="text/javascript">
+       var host = "sysukinthon.github.io";
+       if ((host == window.location.host) && (window.location.protocol != "https:"))
+           window.location.protocol = "https";
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Kinthon</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/Web">前端</a></li>
+				        
+							<li><a href="/tags/CG">计算机图形学</a></li>
+				        
+							<li><a href="/tags/ML">机器学习</a></li>
+				        
+							<li><a href="/tags/NN">神经网络</a></li>
+				        
+							<li><a href="/tags/Others">其他</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/sysuKinthon" title="github">github</a>
+					        
+								<a class="douban" target="_blank" href="http://www.cnblogs.com/kinthon/" title="douban">douban</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Browser/" style="font-size: 10px;">Browser</a> <a href="/tags/CG/" style="font-size: 13.33px;">CG</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DL/" style="font-size: 11.67px;">DL</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ML/" style="font-size: 16.67px;">ML</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/NN/" style="font-size: 10px;">NN</a> <a href="/tags/Node/" style="font-size: 15px;">Node</a> <a href="/tags/OpenGL/" style="font-size: 11.67px;">OpenGL</a> <a href="/tags/OpengGL/" style="font-size: 10px;">OpengGL</a> <a href="/tags/Opengl/" style="font-size: 10px;">Opengl</a> <a href="/tags/Others/" style="font-size: 18.33px;">Others</a> <a href="/tags/Project/" style="font-size: 13.33px;">Project</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/基础知识/" style="font-size: 11.67px;">基础知识</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">灵魂之于菩堤，清则静； 追求之于世俗，强则存。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Kinthon</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/avatar.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Kinthon</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/Web">前端</a></li>
+		        
+					<li><a href="/tags/CG">计算机图形学</a></li>
+		        
+					<li><a href="/tags/ML">机器学习</a></li>
+		        
+					<li><a href="/tags/NN">神经网络</a></li>
+		        
+					<li><a href="/tags/Others">其他</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sysuKinthon" title="github">github</a>
+			        
+						<a class="douban" target="_blank" href="http://www.cnblogs.com/kinthon/" title="douban">douban</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Web-Project-Calculation" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/27/Web-Project-Calculation/" class="article-date">
+  	<time datetime="2016-02-27T08:36:07.000Z" itemprop="datePublished">2016-02-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS 之简单计算器
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Project/">Project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a><strong>要求</strong></h3><ul>
+<li>响应用户对数字和算术操作符按钮的操作，记录并显示用户通过按钮输入的算术表达式（50分）响应用户功能按钮的操作</li>
+<li>用户按下“←”按钮，删除当前算术表达式最后一个字符，并更新显示</li>
+<li>用户按下“CE”按钮，清除当前算术表达式（20分）用户按下“=”按钮，计算当前表达式的结果并显示</li>
+<li>如果，算术表达式非法，弹出警告框提醒用户，并终止计算<a id="more"></a>
+</li>
+</ul>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a><strong>实现</strong></h3><ul>
+<li>效果图<br><img src="http://7xncgn.com1.z0.glb.clouddn.com/16-2-27/637943.jpg" alt="Calculation"></li>
+<li>实现代码 <a href="https://github.com/sysuKinthon/Web2.0/tree/master/Web2.0/calculator" target="_blank" rel="external">Github</a></li>
+</ul>
+<h3 id="经验所得"><a href="#经验所得" class="headerlink" title="经验所得"></a><strong>经验所得</strong></h3><ul>
+<li>其实代码实现不难，而且用了已经不大推崇的eval函数，这个函数会带来代码注入的问题</li>
+<li>实现过程中主要想说的是一种思维，因为之前一直都不怎么接触事件处理机制，一直都是用c,c++,java来打代码，所以在写这个的时候有一个致命的思维误区:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//if input the symbol, the reslut should be clear;</span></span><br><span class="line"><span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; symbolList.length; ++i) &#123;</span><br><span class="line">    symbolList[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;  <span class="comment">//不能使用i来索引对象，因为当Onclick事件发生时，i已经都是20了。</span></span><br><span class="line">        <span class="keyword">if</span>(flag == <span class="literal">true</span>) &#123;</span><br><span class="line">            expression.value = <span class="string">""</span>;</span><br><span class="line">            flag = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> content = event.target.innerText;</span><br><span class="line">        expression.value = expression.value + content;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>一开始在for循环里面，一上手就想用sybmolList[i]来引用innerText;也就是：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> content = event.target.innerText;</span><br><span class="line">换成</span><br><span class="line"><span class="keyword">var</span> content = symbolList[i].innerText;</span><br></pre></td></tr></table></figure></p>
+<p>发现我一点击事件就出现越界行为，输出查看i,i的值都是同一个数，这个数决定于window.onload回调函数结束后的i值。要清楚，这是闭包导致的，当我们的DOM加装完毕后，window.onload事件就发动了，并调用事件处理；好像一切都没有问题，但是想想看，当我们点击事件，并触发了symbolList中的对象时，回调了我们设置的函数，此时它引用i的值的话，必然是symbolList.length,因为onload事件已经执行了，但由于闭包，如果我们的点击函数中有引用外部的变量的话，是可以访问到的，在javascript中是采用了垃圾处理机制，闭包包含了外部的活动对象，所以这个对象还没有被销毁，可以被引用。所以我们在程序中是不能直接调用 i来索引事件源的，要使用event.target</p>
+<blockquote>
+<p>这里要提一下javaScript的事件回调机制，javaScript的回调函数是放在事件队列中的，而且只有当当前的函数栈为空时，才会才调度事件队列中的函数进函数栈中执行</p>
+</blockquote>
+<ul>
+<li>使用中缀表达式转后缀表达式来实现<ul>
+<li>毕竟利用eval来实现计算会导致一些意想不到的问题，所以就用算法实现了下中缀表达式的计算:参考</li>
+<li>关于考虑运算符优先级的问题，也就是什么时候栈里面的运算符应该出栈，主要考虑一个方面就可以了，就是运算符的栈始终要保持栈顶的元素优先级最高，相同优先级的后面进入的优先级高，同时需要考虑对于”)”来说，当在遇到”(“时，它的优先级是最高的，遇到后，就是最低的了(也就是不要入栈）。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// calculator the postfix expression</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">calculate</span>(<span class="params">postfix</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> i, item, result;</span><br><span class="line">    <span class="keyword">var</span> num = [];</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; postfix.length; i++) &#123;</span><br><span class="line">        item = <span class="built_in">parseFloat</span>(postfix[i]);</span><br><span class="line">        <span class="keyword">if</span>(!<span class="built_in">isNaN</span>(item)) &#123;</span><br><span class="line">            num.push(item);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            second = num.pop();</span><br><span class="line">            first = num.pop();</span><br><span class="line">            <span class="keyword">switch</span>(postfix[i]) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'+'</span>:</span><br><span class="line">                    result = first + second;</span><br><span class="line">                    num.push(result);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'-'</span>:</span><br><span class="line">                    result = first - second;</span><br><span class="line">                    num.push(result);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'/'</span>:</span><br><span class="line">                    result = first / second;</span><br><span class="line">                    num.push(result);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'*'</span>:</span><br><span class="line">                    result = first * second;</span><br><span class="line">                    num.push(result);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//console.log(result);</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    result = num.pop();</span><br><span class="line">    result = <span class="built_in">parseFloat</span>(result.toFixed(<span class="number">8</span>), <span class="number">10</span>);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// translate the infix expression to the postfix expression</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toPostfix</span>(<span class="params">infix</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//split the input to the token</span></span><br><span class="line">    <span class="keyword">var</span> regex = <span class="regexp">/(\(|\)|\/|\*|\-|\+)/</span>;</span><br><span class="line">    <span class="keyword">var</span> array= infix.split(regex);</span><br><span class="line">    <span class="keyword">var</span> i;</span><br><span class="line">    <span class="keyword">var</span> postfix = [];</span><br><span class="line">    <span class="keyword">var</span> symbol = [];</span><br><span class="line">    <span class="comment">// remove the empty item</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(array[i] == <span class="string">""</span>)</span><br><span class="line">            array.splice(i, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> item = array[i];</span><br><span class="line">        <span class="keyword">if</span>(!<span class="built_in">isNaN</span>(<span class="built_in">parseFloat</span>(item))) &#123;</span><br><span class="line">            postfix.push(item);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">while</span>(symbol.length) &#123;</span><br><span class="line">                <span class="keyword">if</span>(compare(item, symbol[symbol.length-<span class="number">1</span>])) &#123; <span class="comment">//if the item is greater</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    postfix.push(symbol.pop());</span><br><span class="line">                    <span class="comment">/*if(postfix[postfix.length-1] == "(")</span><br><span class="line">                        console.log(1);*/</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(item == <span class="string">")"</span>) &#123;</span><br><span class="line">                symbol.pop(); <span class="comment">//pop "("</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">                symbol.push(item);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(symbol.length) &#123;</span><br><span class="line">        <span class="keyword">if</span>(symbol) &#123;</span><br><span class="line">            postfix.push(symbol.pop());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> postfix;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">item, top</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(item.match(<span class="regexp">/\)/</span>) &amp;&amp; top.match(<span class="regexp">/\(/</span>))</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">if</span>(item.match(<span class="regexp">/\(/</span>) || top.match(<span class="regexp">/\(/</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(item.match(<span class="regexp">/\*|\//</span>) &amp;&amp; top.match(<span class="regexp">/\+|\-/</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//console.log(item);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/02/27/Web-FadeOut-FadeIn/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          纯JS实现fadeIn 和fadeOut
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/02/27/Node-Set-Up-Server/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">利用nodejs搭建服务器实现注册登录系统</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Web-Project-Calculation" data-title="JS 之简单计算器" data-url="https://sysukinthon.github.io/2016/02/27/Web-Project-Calculation/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Kinthon
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

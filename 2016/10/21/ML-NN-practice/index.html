@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>神经网络实践 | Kinthon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本博文是学习了部分机器学习和深度学习知识后，结合wildml网站,进行深度学习神经网络实践的一个总结；博文中会对机器学习和深度学习的一些知识进行回顾和强化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="神经网络实践">
+<meta property="og:url" content="https://sysukinthon.github.io/2016/10/21/ML-NN-practice/index.html">
+<meta property="og:site_name" content="Kinthon">
+<meta property="og:description" content="本博文是学习了部分机器学习和深度学习知识后，结合wildml网站,进行深度学习神经网络实践的一个总结；博文中会对机器学习和深度学习的一些知识进行回顾和强化">
+<meta property="og:image" content="http://d3kbpzbmcynnmx.cloudfront.net/wp-content/uploads/2015/09/nn-from-scratch-3-layer-network.png">
+<meta property="og:image" content="http://d3kbpzbmcynnmx.cloudfront.net/wp-content/uploads/2015/09/nn-from-scratch-3-layer-network.png">
+<meta property="og:image" content="http://7xncgn.com1.z0.glb.clouddn.com/16-10-23/2545589.jpg">
+<meta property="og:updated_time" content="2016-11-06T12:23:35.181Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="神经网络实践">
+<meta name="twitter:description" content="本博文是学习了部分机器学习和深度学习知识后，结合wildml网站,进行深度学习神经网络实践的一个总结；博文中会对机器学习和深度学习的一些知识进行回顾和强化">
+  
+    <link rel="alternative" href="/atom.xml" title="Kinthon" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="canonical" href="https://sysukinthon.github.io/2016/10/21/ML-NN-practice/">
+<script type="text/javascript">
+       var host = "sysukinthon.github.io";
+       if ((host == window.location.host) && (window.location.protocol != "https:"))
+           window.location.protocol = "https";
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Kinthon</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/Web">前端</a></li>
+				        
+							<li><a href="/tags/CG">计算机图形学</a></li>
+				        
+							<li><a href="/tags/ML">机器学习</a></li>
+				        
+							<li><a href="/tags/NN">神经网络</a></li>
+				        
+							<li><a href="/tags/Others">其他</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/sysuKinthon" title="github">github</a>
+					        
+								<a class="douban" target="_blank" href="http://www.cnblogs.com/kinthon/" title="douban">douban</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Browser/" style="font-size: 10px;">Browser</a> <a href="/tags/CG/" style="font-size: 13.33px;">CG</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DL/" style="font-size: 11.67px;">DL</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ML/" style="font-size: 16.67px;">ML</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/NN/" style="font-size: 10px;">NN</a> <a href="/tags/Node/" style="font-size: 15px;">Node</a> <a href="/tags/OpenGL/" style="font-size: 11.67px;">OpenGL</a> <a href="/tags/OpengGL/" style="font-size: 10px;">OpengGL</a> <a href="/tags/Opengl/" style="font-size: 10px;">Opengl</a> <a href="/tags/Others/" style="font-size: 18.33px;">Others</a> <a href="/tags/Project/" style="font-size: 13.33px;">Project</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/基础知识/" style="font-size: 11.67px;">基础知识</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">灵魂之于菩堤，清则静； 追求之于世俗，强则存。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Kinthon</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/avatar.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Kinthon</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/Web">前端</a></li>
+		        
+					<li><a href="/tags/CG">计算机图形学</a></li>
+		        
+					<li><a href="/tags/ML">机器学习</a></li>
+		        
+					<li><a href="/tags/NN">神经网络</a></li>
+		        
+					<li><a href="/tags/Others">其他</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sysuKinthon" title="github">github</a>
+			        
+						<a class="douban" target="_blank" href="http://www.cnblogs.com/kinthon/" title="douban">douban</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-ML-NN-practice" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/21/ML-NN-practice/" class="article-date">
+  	<time datetime="2016-10-21T13:11:41.000Z" itemprop="datePublished">2016-10-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      神经网络实践
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DL/">DL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ML/">ML</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>本博文是学习了部分机器学习和深度学习知识后，结合<a href="http://www.wildml.com/" target="_blank" rel="external">wildml</a>网站,进行深度学习神经网络实践的一个总结；博文中会对机器学习和深度学习的一些知识进行回顾和强化</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
+<li>博文中是实现了一个3层的<a href="">神经网络</a>，如下图：<img src="http://d3kbpzbmcynnmx.cloudfront.net/wp-content/uploads/2015/09/nn-from-scratch-3-layer-network.png" alt=""></li>
+<li>代码实现中并没有使用什么<a href="">深度学习框架</a>,只是使用了<a href="">基本的python库</a>进行了数据的生成，数据的模拟显示。</li>
+<li>这里主要结合网站讲解下深度神经网络的训练过程</li>
+</ul>
+<h3 id="流程讲解"><a href="#流程讲解" class="headerlink" title="流程讲解"></a>流程讲解</h3><ul>
+<li>代码下载<ul>
+<li>git clone <a href="https://github.com/dennybritz/nn-from-scratch" target="_blank" rel="external">https://github.com/dennybritz/nn-from-scratch</a></li>
+</ul>
+</li>
+<li>环境安装<ul>
+<li>如果有安装pip，可以直接<code>pip install numpy</code>， <code>pip install sklearn</code> ,<code>pip install matplotlib</code></li>
+<li>如果上述安装不成功，在ubuntu下面可以使用apt-get来安装，这个方法比上面会更可靠<code>sudo apt-get install python-numpy</code> <code>sudo apt-get install python-sklearn</code>,  <code>sudo apt-get install python-matplotlib</code></li>
+</ul>
+</li>
+<li>预备说明<ul>
+<li><a href="">神经网络及训练过程</a></li>
+<li><a href="">numpy相关的操作</a></li>
+<li><a href="">激活函数</a></li>
+</ul>
+</li>
+<li><p>build-model代码说明</p>
+<ul>
+<li>概述说明<ul>
+<li>在这个3层的<img src="http://d3kbpzbmcynnmx.cloudfront.net/wp-content/uploads/2015/09/nn-from-scratch-3-layer-network.png" alt="网络">中,隐层使用的<a href="">激活函数</a>是tanh函数，而输出层使用的激活函数是softmax函数，当然你也可以使用logistic函数；</li>
+</ul>
+</li>
+<li><p>理论：这里只针对3层的情况进行说明，过程主要是反向传播算法的流程</p>
+<ul>
+<li>反向传播算法主要公式 相关公式都来自《神经网络与机器学习一书》<ul>
+<li>符号说明<ul>
+<li>$\delta_j^{(l)}(n)$ 表示在第n轮迭代中，计算网络中第l层的神经元j的局部梯度</li>
+<li>$e_j^{L}(n)$ 误差信号，表示输出结点的误差计算，在输出层时它的计算是预期值减去输出信号</li>
+<li><img src="http://7xncgn.com1.z0.glb.clouddn.com/16-10-23/2545589.jpg" alt="局部梯度域"></li>
+<li>$ \psi’_j(v_j^{(L)}(n)) $表示激活函数针对诱导局部域进行求导</li>
+</ul>
+</li>
+<li>局部梯度计算<script type="math/tex; mode=display">\delta_j^{(l)}(n) = \begin{cases} e_j^{L}(n)  \psi'_j(v_j^{(L)}(n)) , & \text{对输出层L的神经元j} \\ \psi'_j(v_j^{(L)}(n))\sum_{k}\delta_k^{(l+1)}(n)w_{kj}^{(l+1)}(n), & \text{对隐藏层l的神经元} \\ \end{cases}</script></li>
+<li>权重更新 <script type="math/tex">w_{ji}^{(l)}(n+1)=w_{ji}^{(l)}(n) +\alpha[w_{ji}^{(l)}(n-1)] + \eta\delta_j^{(l)}(n)y_i^{(l-1)}(n)</script></li>
+</ul>
+</li>
+<li>下列公式符号说明 <ul>
+<li>输入层算为第0层</li>
+<li>$z_i$表示第一层的诱导局部域，也就是经过加权向量和偏置叠加计算之后的结果</li>
+<li>$a_i$表示第一层的输出信号，也就是$z_i$经过激活函数处理后的结果  </li>
+</ul>
+</li>
+<li>前向计算<ul>
+<li><script type="math/tex; mode=display">\begin{aligned}z_1&=xW_1+b_1\\a_1&=\tanh(z_1)\\z_2&=a_1W_2+b_2\\a_2&=\hat{y}=\mathrm{softmax}(z_2)\end{aligned}</script></li>
+</ul>
+</li>
+<li><p>反向计算</p>
+<ul>
+<li><script type="math/tex; mode=display">\begin{aligned}&\delta_3=\hat{y}-y\\&\delta_2=(1-\tanh^2z_1)\circ\delta_3W_2^T\\&\frac{\partial{L}}{\partial{W_2}}=a_1^T\delta_3\\&\frac{\partial{L}}{\partial{b_2}}=\delta_3\\&\frac{\partial{L}}{\partial{W_1}}=x^T\delta2\\&\frac{\partial{L}}{\partial{b_1}}=\delta2\\\end{aligned}</script></li>
+<li><script type="math/tex; mode=display">W_i = W_i + \alpha W_i + \eta\frac{\partial{L}}{\partial{W_i}}</script></li>
+<li><script type="math/tex; mode=display">b_i = b_i + \eta\frac{\partial{L}}{\partial{b_i}}</script></li>
+<li>说明，其中 $1-tanh^z_1$表示tanh函数的导数</li>
+<li>其中的 $\circ$表示矩阵中对应坐标数据相乘；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>代码<ul>
+<li>说明<ul>
+<li>在代码实现里面，在计算输出层的误差信号的时候，使用的策略是将每个估计出来的概率组(也就是当前每个类别的可能性，经过softmax后是一个从0-1的数)，根据真实的类别选择性进行-1操作，选择的方式是进行如果是第1类别的话，就将估计出来的第1类别的概率减1,如果是第0类别的话， 就将估计出来的第0类别的概率减1</li>
+<li>在更新权重的时候，正则的针对的权重参数是n轮的，而不是n-1轮的<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#前向计算，利用随机得到的Wi和bi参数进行前向计算，得到诱导局部域Zi和输出信号a，其中隐藏层的激活函数使用的是tanh，而输出层为了得到关于所有类别的概率使用了softmax函数，方便扩展到多类的情况；</span></span><br><span class="line">z1 = X.dot(W1) + b1  </span><br><span class="line">a1 = np.tanh(z1)</span><br><span class="line">z2 = a1.dot(W2) + b2</span><br><span class="line">exp_scores = np.exp(z2)</span><br><span class="line">probs = exp_scores / np.sum(exp_scores, axis=<span class="number">1</span>, keepdims=<span class="keyword">True</span>)</span><br><span class="line">   </span><br><span class="line"><span class="comment">#反向计算</span></span><br><span class="line"><span class="comment">#？ 这里有个不是很懂的地方就是在求delta3的时候，它的误差信息的计算方式与公式对不上</span></span><br><span class="line"><span class="comment"># 权重与偏置有个区别就是说，权重是需要正则化进行限制的，而偏置不用</span></span><br><span class="line">delta3 = probs</span><br><span class="line">delta3[range(num_examples), y] -= <span class="number">1</span></span><br><span class="line">dW2 = (a1.T).dot(delta3)</span><br><span class="line">db2 = np.sum(delta3, axis=<span class="number">0</span>, keepdims=<span class="keyword">True</span>)</span><br><span class="line">delta2 = delta3.dot(W2.T) * (<span class="number">1</span> - np.power(a1, <span class="number">2</span>))</span><br><span class="line">dW1 = np.dot(X.T, delta2)</span><br><span class="line">db1 = np.sum(delta2, axis=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add regularization terms (b1 and b2 don't have regularization terms)</span></span><br><span class="line">dW2 += Config.reg_lambda * W2</span><br><span class="line">dW1 += Config.reg_lambda * W1</span><br><span class="line"></span><br><span class="line"><span class="comment"># Gradient descent parameter update</span></span><br><span class="line">W1 += -Config.epsilon * dW1</span><br><span class="line">b1 += -Config.epsilon * db1</span><br><span class="line">W2 += -Config.epsilon * dW2</span><br><span class="line">b2 += -Config.epsilon * db2</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="相关参考网址"><a href="#相关参考网址" class="headerlink" title="相关参考网址"></a>相关参考网址</h3><ul>
+<li><a href="http://www.wildml.com/2015/09/implementing-a-neural-network-from-scratch/" target="_blank" rel="external">CNN</a></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/10/21/hexo-mathjax-latex/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          在Hexo中使用mathjax来渲染latex
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/21/Math-LinearAlgebra-matrix-fractorization/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">线性代数之矩阵分解</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="ML-NN-practice" data-title="神经网络实践" data-url="https://sysukinthon.github.io/2016/10/21/ML-NN-practice/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Kinthon
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>opengl环境的安装 | Kinthon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="基本环境安装ubuntu下
+安装命令如下123sudo apt-get install build-essiontialsudo apt-get install libglu1-mesa-dev sudo apt-get install freeglut3-dev">
+<meta property="og:type" content="article">
+<meta property="og:title" content="opengl环境的安装">
+<meta property="og:url" content="https://sysukinthon.github.io/2016/09/23/CG-Opengl-env-install/index.html">
+<meta property="og:site_name" content="Kinthon">
+<meta property="og:description" content="基本环境安装ubuntu下
+安装命令如下123sudo apt-get install build-essiontialsudo apt-get install libglu1-mesa-dev sudo apt-get install freeglut3-dev">
+<meta property="og:updated_time" content="2016-11-06T12:23:35.181Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="opengl环境的安装">
+<meta name="twitter:description" content="基本环境安装ubuntu下
+安装命令如下123sudo apt-get install build-essiontialsudo apt-get install libglu1-mesa-dev sudo apt-get install freeglut3-dev">
+  
+    <link rel="alternative" href="/atom.xml" title="Kinthon" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="canonical" href="https://sysukinthon.github.io/2016/09/23/CG-Opengl-env-install/">
+<script type="text/javascript">
+       var host = "sysukinthon.github.io";
+       if ((host == window.location.host) && (window.location.protocol != "https:"))
+           window.location.protocol = "https";
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Kinthon</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/Web">前端</a></li>
+				        
+							<li><a href="/tags/CG">计算机图形学</a></li>
+				        
+							<li><a href="/tags/ML">机器学习</a></li>
+				        
+							<li><a href="/tags/NN">神经网络</a></li>
+				        
+							<li><a href="/tags/Others">其他</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/sysuKinthon" title="github">github</a>
+					        
+								<a class="douban" target="_blank" href="http://www.cnblogs.com/kinthon/" title="douban">douban</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Browser/" style="font-size: 10px;">Browser</a> <a href="/tags/CG/" style="font-size: 13.33px;">CG</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DL/" style="font-size: 11.67px;">DL</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ML/" style="font-size: 16.67px;">ML</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/NN/" style="font-size: 10px;">NN</a> <a href="/tags/Node/" style="font-size: 15px;">Node</a> <a href="/tags/OpenGL/" style="font-size: 11.67px;">OpenGL</a> <a href="/tags/OpengGL/" style="font-size: 10px;">OpengGL</a> <a href="/tags/Opengl/" style="font-size: 10px;">Opengl</a> <a href="/tags/Others/" style="font-size: 18.33px;">Others</a> <a href="/tags/Project/" style="font-size: 13.33px;">Project</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/基础知识/" style="font-size: 11.67px;">基础知识</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">灵魂之于菩堤，清则静； 追求之于世俗，强则存。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Kinthon</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/avatar.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Kinthon</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/Web">前端</a></li>
+		        
+					<li><a href="/tags/CG">计算机图形学</a></li>
+		        
+					<li><a href="/tags/ML">机器学习</a></li>
+		        
+					<li><a href="/tags/NN">神经网络</a></li>
+		        
+					<li><a href="/tags/Others">其他</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sysuKinthon" title="github">github</a>
+			        
+						<a class="douban" target="_blank" href="http://www.cnblogs.com/kinthon/" title="douban">douban</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-CG-Opengl-env-install" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/23/CG-Opengl-env-install/" class="article-date">
+  	<time datetime="2016-09-23T08:58:53.000Z" itemprop="datePublished">2016-09-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      opengl环境的安装
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CG/">CG</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Opengl/">Opengl</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="基本环境安装"><a href="#基本环境安装" class="headerlink" title="基本环境安装"></a>基本环境安装</h3><h4 id="ubuntu下"><a href="#ubuntu下" class="headerlink" title="ubuntu下"></a>ubuntu下</h4><ul>
+<li>安装命令如下<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="operator"><span class="keyword">install</span> <span class="keyword">build</span>-essiontial</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> libglu1-mesa-dev </span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> freeglut3-dev</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>测试代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">if</span> defined(_WIN32) || defined(WIN32)</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;windows.h&gt;</span> </span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;GL/glut.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">GLenum doubleBuffer;</span><br><span class="line">GLint thing1, thing2;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Init</span><span class="params">(<span class="keyword">void</span>)</span></span><br><span class="line"></span>&#123;</span><br><span class="line"></span><br><span class="line">    glClearColor(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>);</span><br><span class="line">    glClearAccum(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>);</span><br><span class="line"></span><br><span class="line">    thing1 = glGenLists(<span class="number">1</span>);</span><br><span class="line">    glNewList(thing1, GL_COMPILE);</span><br><span class="line">    glColor3f(<span class="number">1.0</span>, <span class="number">0.0</span>, <span class="number">0.0</span>);</span><br><span class="line">    glRectf(-<span class="number">1.0</span>, -<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>);</span><br><span class="line">    glEndList();</span><br><span class="line"></span><br><span class="line">    thing2 = glGenLists(<span class="number">1</span>);</span><br><span class="line">    glNewList(thing2, GL_COMPILE);</span><br><span class="line">    glColor3f(<span class="number">0.0</span>, <span class="number">1.0</span>, <span class="number">0.0</span>);</span><br><span class="line">    glRectf(<span class="number">0.0</span>, -<span class="number">1.0</span>, <span class="number">1.0</span>, <span class="number">1.0</span>);</span><br><span class="line">    glEndList();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Reshape</span><span class="params">(<span class="keyword">int</span> width, <span class="keyword">int</span> height)</span></span><br><span class="line"></span>&#123;</span><br><span class="line"></span><br><span class="line">    glViewport(<span class="number">0</span>, <span class="number">0</span>, width, height);</span><br><span class="line"></span><br><span class="line">    glMatrixMode(GL_PROJECTION);</span><br><span class="line">    glLoadIdentity();</span><br><span class="line">    glMatrixMode(GL_MODELVIEW);</span><br><span class="line">    glLoadIdentity();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Key</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> key, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span><br><span class="line"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">switch</span> (key) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'1'</span>:</span><br><span class="line">    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);</span><br><span class="line">    glutPostRedisplay();</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">'2'</span>:</span><br><span class="line">    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);</span><br><span class="line">    glutPostRedisplay();</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="number">27</span>:</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Draw</span><span class="params">(<span class="keyword">void</span>)</span></span><br><span class="line"></span>&#123;</span><br><span class="line"></span><br><span class="line">    glPushMatrix();</span><br><span class="line"></span><br><span class="line">    glScalef(<span class="number">0.8</span>, <span class="number">0.8</span>, <span class="number">1.0</span>);</span><br><span class="line"></span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line">    glCallList(thing1);</span><br><span class="line">    glAccum(GL_LOAD, <span class="number">0.5</span>);</span><br><span class="line"></span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line">    glCallList(thing2);</span><br><span class="line">    glAccum(GL_ACCUM, <span class="number">0.5</span>);</span><br><span class="line"></span><br><span class="line">    glAccum(GL_RETURN, <span class="number">1.0</span>);</span><br><span class="line"></span><br><span class="line">    glPopMatrix();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (doubleBuffer) &#123;</span><br><span class="line">    glutSwapBuffers();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    glFlush();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Args</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    GLint i;</span><br><span class="line"></span><br><span class="line">    doubleBuffer = GL_FALSE;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; argc; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strcmp</span>(argv[i], <span class="string">"-sb"</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">        doubleBuffer = GL_FALSE;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">strcmp</span>(argv[i], <span class="string">"-db"</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">        doubleBuffer = GL_TRUE;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    GLenum type;</span><br><span class="line"></span><br><span class="line">    glutInit(&amp;argc, argv);</span><br><span class="line">    Args(argc, argv);</span><br><span class="line"></span><br><span class="line">    type = GLUT_RGB | GLUT_ACCUM;</span><br><span class="line">    type |= (doubleBuffer) ? GLUT_DOUBLE : GLUT_SINGLE;</span><br><span class="line">    glutInitDisplayMode(type);</span><br><span class="line">    glutInitWindowSize(<span class="number">300</span>, <span class="number">300</span>);</span><br><span class="line">    glutCreateWindow(<span class="string">"Accum Test"</span>);</span><br><span class="line"></span><br><span class="line">    Init();</span><br><span class="line"></span><br><span class="line">    glutReshapeFunc(Reshape);</span><br><span class="line">    glutKeyboardFunc(Key);</span><br><span class="line">    glutDisplayFunc(Draw);</span><br><span class="line">    glutMainLoop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>运行命令 <code>gcc ./test.c -lGL -lGLU -lglut</code></li>
+</ul>
+</li>
+<li><p>参考</p>
+<ul>
+<li><a href="http://blog.csdn.net/plc_jianghao/article/details/51154929" target="_blank" rel="external">http://blog.csdn.net/plc_jianghao/article/details/51154929</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="windows下"><a href="#windows下" class="headerlink" title="windows下"></a>windows下</h4><ul>
+<li>安装opengl 请<a href="http://www.xiaobao1993.com/31.html" target="_blank" rel="external">参考</a> </li>
+<li>主要是要把解压目录下的文件放到对应的文件里面</li>
+</ul>
+<h3 id="ubuntu下opengl的开发环境安装"><a href="#ubuntu下opengl的开发环境安装" class="headerlink" title="ubuntu下opengl的开发环境安装"></a>ubuntu下opengl的开发环境安装</h3><h4 id="codeblocks"><a href="#codeblocks" class="headerlink" title="codeblocks"></a>codeblocks</h4><ul>
+<li>安装<ul>
+<li>软件安装: <code>sudo apt-get install codeblocks</code></li>
+</ul>
+</li>
+<li><p>运行说明</p>
+<ul>
+<li>运行主要是选择console application然后设置链接的库就可以了</li>
+</ul>
+</li>
+<li><p>运行glut</p>
+<ul>
+<li>在上面已经安装了</li>
+<li>查找软件安装位置 <code>dpkg -L freeglut3</code>,得到我的安装目录位置在/usr/lib/x86_64-linux-gnu</li>
+<li><p>复制到/usr/lib目录下（要根据得到的目录的地址进行变换）</p>
+<ul>
+<li><code>sudo cp /usr/lib/x86_64-linux-gnu/libGL.so /usr/lib/libGL.so</code></li>
+<li><code>sudo cp /usr/lib/x86_64-linux-gnu/libGLU.so /usr/lib/libGLU.so</code></li>
+<li><code>sudo cp /usr/lib/x86_64-linux-gnu/libglut.so /usr/lib/libglut.so</code></li>
+</ul>
+</li>
+<li><p>运行</p>
+<ul>
+<li>打开codeblocks-&gt; 新建project -&gt; console application</li>
+<li>[settings] -&gt; Compiler 选择 GNU GCC Compiler</li>
+<li>[settings] -&gt; Compiler 选择 Liker settings -&gt; Link library (填写如下的地址)<ul>
+<li>/usr/lib/libglut.so</li>
+<li>/usr/lib/libGLU.so</li>
+<li>/usr/lib/libGL.so</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>测试代码可以用上面用的代码</p>
+</li>
+</ul>
+</li>
+<li><p>运行glew与glfw</p>
+<ul>
+<li><p>glew 安装</p>
+<ul>
+<li><code>apt-cache search glew</code> //查找依赖</li>
+<li><code>sudo apt-get install 。。。</code>(…里面填写在apt-cache里面显示的软件)</li>
+</ul>
+</li>
+<li><p>glfw3 安装</p>
+<ul>
+<li><code>apt-cache search glew</code></li>
+<li><code>sudo apt-get install libglfw3-dev libglfw3</code>//只安装glfw3</li>
+</ul>
+</li>
+<li><p>复制</p>
+<ul>
+<li>glew: 在上面安装完后应该在/usr/include/GL下面有一个glew.h的文，同时在通过<code>dpkg -L libglew1.10</code>（我的是libglew1.10）查看相关的so文件在哪里，我的是在<code>/usr/lib/x86_64-linux-gnu/libGLEW.so.1.10</code>;</li>
+<li>glfw3: 操作与glew一样，先查看安装在哪里，</li>
+<li>复制 <code>sudo cp /usr/lib/x86_64-linux-gnu/libGLEW.so.10 /usr/lib</code> <code>sudo cp /usr/lib/x86_64-linux-gnu/libglfw.so.3</code></li>
+</ul>
+</li>
+<li><p>设置</p>
+<ul>
+<li>运行同运行glut的一样，但是在设置链接时也就是[settings-&gt;linker settings]这里，要多设置上<code>/usr/lib/libglfw.so.3</code> <code>/usr/lib/libGLEW.so.1.10</code></li>
+</ul>
+</li>
+<li>测试代码  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// GLEW</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> GLEW_STATIC</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;GL/glew.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// GLFW</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;GLFW/glfw3.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Function prototypes</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">key_callback</span><span class="params">(GLFWwindow* window, <span class="keyword">int</span> key, <span class="keyword">int</span> scancode, <span class="keyword">int</span> action, <span class="keyword">int</span> mode)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Window dimensions</span></span><br><span class="line"><span class="keyword">const</span> GLuint WIDTH = <span class="number">800</span>, HEIGHT = <span class="number">600</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Shaders</span></span><br><span class="line"><span class="keyword">const</span> GLchar* vertexShaderSource = <span class="string">"#version 330 core\n"</span></span><br><span class="line">    <span class="string">"layout (location = 0) in vec3 position;\n"</span></span><br><span class="line">    <span class="string">"layout (location = 1) in vec3 color;\n"</span></span><br><span class="line">    <span class="string">"out vec3 ourColor;\n"</span></span><br><span class="line">    <span class="string">"void main()\n"</span></span><br><span class="line">    <span class="string">"&#123;\n"</span></span><br><span class="line">    <span class="string">"gl_Position = vec4(position, 1.0);\n"</span></span><br><span class="line">    <span class="string">"ourColor = color;\n"</span></span><br><span class="line">    <span class="string">"&#125;\0"</span>;</span><br><span class="line"><span class="keyword">const</span> GLchar* fragmentShaderSource = <span class="string">"#version 330 core\n"</span></span><br><span class="line">    <span class="string">"out vec4 color;\n"</span></span><br><span class="line">    <span class="string">"uniform vec4 ourColor;\n"</span></span><br><span class="line">    <span class="string">"void main()\n"</span></span><br><span class="line">    <span class="string">"&#123;\n"</span></span><br><span class="line">    <span class="string">"color = ourColor;\n"</span></span><br><span class="line">    <span class="string">"&#125;\n\0"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// The MAIN function, from here we start the application and run the game loop</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">// Init GLFW</span></span><br><span class="line">    glfwInit();</span><br><span class="line">    <span class="comment">// Set all the required options for GLFW</span></span><br><span class="line">    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, <span class="number">3</span>);</span><br><span class="line">    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, <span class="number">3</span>);</span><br><span class="line">    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);</span><br><span class="line">    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Create a GLFWwindow object that we can use for GLFW's functions</span></span><br><span class="line">    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, <span class="string">"LearnOpenGL"</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">    glfwMakeContextCurrent(window);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Set the required callback functions</span></span><br><span class="line">    glfwSetKeyCallback(window, key_callback);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Set this to true so GLEW knows to use a modern approach to retrieving function pointers and extensions</span></span><br><span class="line">    glewExperimental = GL_TRUE;</span><br><span class="line">    <span class="comment">// Initialize GLEW to setup the OpenGL Function pointers</span></span><br><span class="line">    glewInit();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Define the viewport dimensions</span></span><br><span class="line">    glViewport(<span class="number">0</span>, <span class="number">0</span>, WIDTH, HEIGHT);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Build and compile our shader program</span></span><br><span class="line">    <span class="comment">// Vertex shader</span></span><br><span class="line">    GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);</span><br><span class="line">    glShaderSource(vertexShader, <span class="number">1</span>, &amp;vertexShaderSource, <span class="literal">NULL</span>);</span><br><span class="line">    glCompileShader(vertexShader);</span><br><span class="line">    <span class="comment">// Check for compile time errors</span></span><br><span class="line">    GLint success;</span><br><span class="line">    GLchar infoLog[<span class="number">512</span>];</span><br><span class="line">    glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &amp;success);</span><br><span class="line">    <span class="keyword">if</span> (!success)</span><br><span class="line">    &#123;</span><br><span class="line">        glGetShaderInfoLog(vertexShader, <span class="number">512</span>, <span class="literal">NULL</span>, infoLog);</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"ERROR::SHADER::VERTEX::COMPILATION_FAILED\n"</span> &lt;&lt; infoLog &lt;&lt; <span class="built_in">std</span>::endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Fragment shader</span></span><br><span class="line">    GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);</span><br><span class="line">    glShaderSource(fragmentShader, <span class="number">1</span>, &amp;fragmentShaderSource, <span class="literal">NULL</span>);</span><br><span class="line">    glCompileShader(fragmentShader);</span><br><span class="line">    <span class="comment">// Check for compile time errors</span></span><br><span class="line">    glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &amp;success);</span><br><span class="line">    <span class="keyword">if</span> (!success)</span><br><span class="line">    &#123;</span><br><span class="line">        glGetShaderInfoLog(fragmentShader, <span class="number">512</span>, <span class="literal">NULL</span>, infoLog);</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n"</span> &lt;&lt; infoLog &lt;&lt; <span class="built_in">std</span>::endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Link shaders</span></span><br><span class="line">    GLuint shaderProgram = glCreateProgram();</span><br><span class="line">    glAttachShader(shaderProgram, vertexShader);</span><br><span class="line">    glAttachShader(shaderProgram, fragmentShader);</span><br><span class="line">    glLinkProgram(shaderProgram);</span><br><span class="line">    <span class="comment">// Check for linking errors</span></span><br><span class="line">    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &amp;success);</span><br><span class="line">    <span class="keyword">if</span> (!success) &#123;</span><br><span class="line">        glGetProgramInfoLog(shaderProgram, <span class="number">512</span>, <span class="literal">NULL</span>, infoLog);</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"ERROR::SHADER::PROGRAM::LINKING_FAILED\n"</span> &lt;&lt; infoLog &lt;&lt; <span class="built_in">std</span>::endl;</span><br><span class="line">    &#125;</span><br><span class="line">    glDeleteShader(vertexShader);</span><br><span class="line">    glDeleteShader(fragmentShader);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Set up vertex data (and buffer(s)) and attribute pointers</span></span><br><span class="line">    GLfloat vertices[] = &#123;</span><br><span class="line">        <span class="comment">// Positions</span></span><br><span class="line">         <span class="number">0.5f</span>, -<span class="number">0.5f</span>, <span class="number">0.0f</span>,  <span class="comment">// Bottom Right</span></span><br><span class="line">        -<span class="number">0.5f</span>, -<span class="number">0.5f</span>, <span class="number">0.0f</span>,  <span class="comment">// Bottom Left</span></span><br><span class="line">         <span class="number">0.0f</span>,  <span class="number">0.5f</span>, <span class="number">0.0f</span>   <span class="comment">// Top</span></span><br><span class="line">    &#125;;</span><br><span class="line">    GLuint VBO, VAO;</span><br><span class="line">    glGenVertexArrays(<span class="number">1</span>, &amp;VAO);</span><br><span class="line">    glGenBuffers(<span class="number">1</span>, &amp;VBO);</span><br><span class="line">    <span class="comment">// Bind the Vertex Array Object first, then bind and set vertex buffer(s) and attribute pointer(s).</span></span><br><span class="line">    glBindVertexArray(VAO);</span><br><span class="line"></span><br><span class="line">    glBindBuffer(GL_ARRAY_BUFFER, VBO);</span><br><span class="line">    glBufferData(GL_ARRAY_BUFFER, <span class="keyword">sizeof</span>(vertices), vertices, GL_STATIC_DRAW);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Position attribute</span></span><br><span class="line">    glVertexAttribPointer(<span class="number">0</span>, <span class="number">3</span>, GL_FLOAT, GL_FALSE, <span class="number">3</span> * <span class="keyword">sizeof</span>(GLfloat), (GLvoid*)<span class="number">0</span>);</span><br><span class="line">    glEnableVertexAttribArray(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    glBindVertexArray(<span class="number">0</span>); <span class="comment">// Unbind VAO</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Game loop</span></span><br><span class="line">    <span class="keyword">while</span> (!glfwWindowShouldClose(window))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Check if any events have been activiated (key pressed, mouse moved etc.) and call corresponding response functions</span></span><br><span class="line">        glfwPollEvents();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Render</span></span><br><span class="line">        <span class="comment">// Clear the colorbuffer</span></span><br><span class="line">        glClearColor(<span class="number">0.2f</span>, <span class="number">0.3f</span>, <span class="number">0.3f</span>, <span class="number">1.0f</span>);</span><br><span class="line">        glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Be sure to activate the shader</span></span><br><span class="line">        glUseProgram(shaderProgram);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Update the uniform color</span></span><br><span class="line">        GLfloat timeValue = glfwGetTime();</span><br><span class="line">        GLfloat greenValue = (<span class="built_in">sin</span>(timeValue) / <span class="number">2</span>) + <span class="number">0.5</span>;</span><br><span class="line">        GLint vertexColorLocation = glGetUniformLocation(shaderProgram, <span class="string">"ourColor"</span>);</span><br><span class="line">        glUniform4f(vertexColorLocation, <span class="number">0.0f</span>, greenValue, <span class="number">0.0f</span>, <span class="number">1.0f</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Draw the triangle</span></span><br><span class="line">        glBindVertexArray(VAO);</span><br><span class="line">        glDrawArrays(GL_TRIANGLES, <span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line">        glBindVertexArray(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Swap the screen buffers</span></span><br><span class="line">        glfwSwapBuffers(window);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Properly de-allocate all resources once they've outlived their purpose</span></span><br><span class="line">    glDeleteVertexArrays(<span class="number">1</span>, &amp;VAO);</span><br><span class="line">    glDeleteBuffers(<span class="number">1</span>, &amp;VBO);</span><br><span class="line">    <span class="comment">// Terminate GLFW, clearing any resources allocated by GLFW.</span></span><br><span class="line">    glfwTerminate();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Is called whenever a key is pressed/released via GLFW</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">key_callback</span><span class="params">(GLFWwindow* window, <span class="keyword">int</span> key, <span class="keyword">int</span> scancode, <span class="keyword">int</span> action, <span class="keyword">int</span> mode)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (key == GLFW_KEY_ESCAPE &amp;&amp; action == GLFW_PRESS)</span><br><span class="line">        glfwSetWindowShouldClose(window, GL_TRUE);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>DONE！！！！</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/10/12/CG-Matlab-install/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          linux下安装Matlab
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/14/CG-Basci-learning-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">计算机图形学基础学习（一）</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="CG-Opengl-env-install" data-title="opengl环境的安装" data-url="https://sysukinthon.github.io/2016/09/23/CG-Opengl-env-install/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Kinthon
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
