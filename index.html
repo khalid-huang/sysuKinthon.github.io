@@ -119,7 +119,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Browser/" style="font-size: 10px;">Browser</a> <a href="/tags/CG/" style="font-size: 13.33px;">CG</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DL/" style="font-size: 11.67px;">DL</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ML/" style="font-size: 16.67px;">ML</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/NN/" style="font-size: 10px;">NN</a> <a href="/tags/Node/" style="font-size: 15px;">Node</a> <a href="/tags/OpenGL/" style="font-size: 11.67px;">OpenGL</a> <a href="/tags/OpengGL/" style="font-size: 10px;">OpengGL</a> <a href="/tags/Opengl/" style="font-size: 10px;">Opengl</a> <a href="/tags/Others/" style="font-size: 18.33px;">Others</a> <a href="/tags/Project/" style="font-size: 13.33px;">Project</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/基础知识/" style="font-size: 11.67px;">基础知识</a>
+						<a href="/tags/Browser/" style="font-size: 10px;">Browser</a> <a href="/tags/CG/" style="font-size: 14px;">CG</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DL/" style="font-size: 12px;">DL</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ML/" style="font-size: 18px;">ML</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/NN/" style="font-size: 10px;">NN</a> <a href="/tags/Node/" style="font-size: 16px;">Node</a> <a href="/tags/OpenGL/" style="font-size: 12px;">OpenGL</a> <a href="/tags/OpengGL/" style="font-size: 10px;">OpengGL</a> <a href="/tags/Opengl/" style="font-size: 10px;">Opengl</a> <a href="/tags/Others/" style="font-size: 18px;">Others</a> <a href="/tags/Project/" style="font-size: 14px;">Project</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/基础知识/" style="font-size: 12px;">基础知识</a>
 					</div>
 				</section>
 				
@@ -190,6 +190,96 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-ML-docker-caffe-use" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/11/10/ML-docker-caffe-use/" class="article-date">
+  	<time datetime="2016-11-10T08:10:50.000Z" itemprop="datePublished">2016-11-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/10/ML-docker-caffe-use/">ubuntu 16.04 使用docker运行caffe环境</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h3><ul>
+<li>关于docker的介绍可以参考 <a href="https://zouyapeng.gitbooks.io/docker/content/DockerInstallation/ubuntu_16_04.html" target="_blank" rel="external">zouyapeng</a></li>
+<li>使用docker的原因主要在于因为caffe的环境安装太麻烦了，各种包依赖，一个不小心会把系统的环境搞得很乱；这个可以通过docker来把其环境隔离开，同时又可以使用别人已经搞好的环境来运行；</li>
+<li>安装<ul>
+<li>本人环境是ubuntu 16.04</li>
+<li>安装参考 <a href="https://zouyapeng.gitbooks.io/docker/content/DockerInstallation/ubuntu_16_04.html" target="_blank" rel="external">安装</a></li>
+</ul>
+</li>
+<li>备注<ul>
+<li>安装里面的最后一步有什么用呢？主要是因为如果你没有使用这一步的话，你每次运行的时候都要使用sudo，否则的话，会有如下的情况发生  <img src="http://7xncgn.com1.z0.glb.clouddn.com/public/16-11-10/7838732.jpg" alt="fuck"></li>
+</ul>
+</li>
+<li>几个命令<ul>
+<li>服务方面  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service docker start&#10;service docker restart&#10;service docker stop&#10;service docker status</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>- 镜像方面
+    <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#23601;&#26159;&#26597;&#25214;&#30456;&#20851;&#30340;&#38236;&#20687;&#10;docker search name  #name &#27604;&#22914;caffe&#65292;&#10;#&#19979;&#36733;&#23545;&#24212;&#30340;&#38236;&#20687;&#10;docer pull name &#10;#&#26597;&#30475;&#24403;&#21069;&#26412;&#22320;&#38236;&#20687;&#20179;&#24211;&#26377;&#21738;&#20123;&#38236;&#20687;&#10;docker images</span><br></pre></td></tr></table></figure>
+
+   - 容器方面
+        <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> #&#26597;&#30475;&#21738;&#20123;&#23481;&#22120;&#22312;&#36816;&#34892;&#10;docker ps  -a&#10;#&#26681;&#25454;&#38236;&#20687;&#26469;&#21019;&#24314;&#36816;&#34892;&#23481;&#22120;&#10;docker run -tdi RESPOSITORY # RESPOSITORY&#34920;&#31034;&#21738;&#20010;&#38236;&#20687;&#65292;&#21517;&#31216;&#26159;&#38236;&#20687;&#20179;&#24211;&#20013;&#38236;&#20687;&#30340;&#21517;&#23383;&#10;# &#36827;&#20837;&#23481;&#22120;&#20869; CONTAINER_ID&#21487;&#20197;&#29992;docker ps -a&#26469;&#26597;&#30475;&#10;docker attack CONTAINER_ID # &#20854;&#20013;CONTAINER_ID&#21482;&#35201;&#24320;&#22836;&#19968;&#28857;&#21487;&#20197;&#21644;&#20854;&#20182;&#30340;CONTAINER_ID&#21306;&#20998;&#23601;&#21487;&#20197;;&#10;#&#36864;&#20986;&#24182;&#20572;&#27490;&#23481;&#22120;&#10;exit &#10;#&#20877;&#27425;&#21551;&#21160;&#10;docker start CONTAINER_ID&#10;#&#20572;&#27490;&#27491;&#22312;&#36816;&#34892;&#30340;&#10;docker stop CONTAINER_ID</span><br></pre></td></tr></table></figure>
+
+    -  使用注意
+        * 有时候会出现命令行伪假死状态（进入命令输入完成后，等半天命令行不动，似乎卡死了），其实没有，你输入键盘上的回车敲击几下，发现好着呢（一般而言，当输入docker attach命令完成后，瞬间就进入了容器，输入回车键就跳出命令行伪假死状态）
+</code></pre><h3 id="使用Caffe"><a href="#使用Caffe" class="headerlink" title="使用Caffe"></a>使用Caffe</h3><ul>
+<li>查找并下载对应的镜像到本地 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#26597;&#25214;&#10;docker search caffe&#10;#pull&#10;docker pull tleyden5iwx/caffe-cpu-master&#10;#&#26597;&#30475;&#38236;&#20687;&#24182;&#21019;&#24314;&#24182;&#36816;&#34892;&#23481;&#22120;&#10;docker images&#10;docker run -tdi tleyden5iwx/caffe-cpu-master&#10;#&#36827;&#20837;&#31383;&#21475;&#10;docker ps -a #&#24471;&#21040;ID&#10;docker attach ID&#10;#&#25805;&#20316;caffe&#10;cd opt/caffe&#10;ls&#10;python #&#22312;&#20132;&#20114;&#24335;&#29615;&#22659;&#20013;&#36816;&#34892;import caffe</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a href="http://121.42.47.99/yuenshome/wordpress/?p=3164" target="_blank" rel="external">http://121.42.47.99/yuenshome/wordpress/?p=3164</a></li>
+<li><a href="https://zouyapeng.gitbooks.io/docker/content/DockerInstallation/ubuntu_16_04.html" target="_blank" rel="external">https://zouyapeng.gitbooks.io/docker/content/DockerInstallation/ubuntu_16_04.html</a></li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ML/">ML</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-ML-caffe-lmdb" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -855,68 +945,6 @@
       
         <p class="article-more-link">
           <a  href="/2016/10/21/ML-NN-practice/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Math-LinearAlgebra-matrix-fractorization" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/10/21/Math-LinearAlgebra-matrix-fractorization/" class="article-date">
-  	<time datetime="2016-10-21T11:31:10.000Z" itemprop="datePublished">2016-10-21</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/21/Math-LinearAlgebra-matrix-fractorization/">线性代数之矩阵分解</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>总结下几种矩阵分解形式及其应用</p>
-</blockquote>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Math/">Math</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/10/21/Math-LinearAlgebra-matrix-fractorization/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
