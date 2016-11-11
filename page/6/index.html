@@ -119,7 +119,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Browser/" style="font-size: 10px;">Browser</a> <a href="/tags/CG/" style="font-size: 14px;">CG</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DL/" style="font-size: 12px;">DL</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ML/" style="font-size: 18px;">ML</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/NN/" style="font-size: 10px;">NN</a> <a href="/tags/Node/" style="font-size: 16px;">Node</a> <a href="/tags/OpenGL/" style="font-size: 12px;">OpenGL</a> <a href="/tags/OpengGL/" style="font-size: 10px;">OpengGL</a> <a href="/tags/Opengl/" style="font-size: 10px;">Opengl</a> <a href="/tags/Others/" style="font-size: 18px;">Others</a> <a href="/tags/Project/" style="font-size: 14px;">Project</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/基础知识/" style="font-size: 12px;">基础知识</a>
+						<a href="/tags/Browser/" style="font-size: 10px;">Browser</a> <a href="/tags/CG/" style="font-size: 13.33px;">CG</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DL/" style="font-size: 11.67px;">DL</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ML/" style="font-size: 16.67px;">ML</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/NN/" style="font-size: 10px;">NN</a> <a href="/tags/Node/" style="font-size: 15px;">Node</a> <a href="/tags/OpenGL/" style="font-size: 11.67px;">OpenGL</a> <a href="/tags/OpengGL/" style="font-size: 10px;">OpengGL</a> <a href="/tags/Opengl/" style="font-size: 10px;">Opengl</a> <a href="/tags/Others/" style="font-size: 18.33px;">Others</a> <a href="/tags/Project/" style="font-size: 13.33px;">Project</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/基础知识/" style="font-size: 11.67px;">基础知识</a>
 					</div>
 				</section>
 				
@@ -190,6 +190,80 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-Project-Python-Bookstore" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/28/Project-Python-Bookstore/" class="article-date">
+  	<time datetime="2016-02-28T01:08:48.000Z" itemprop="datePublished">2016-02-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/28/Project-Python-Bookstore/">python实现网上书店</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="需求"><a href="#需求" class="headerlink" title="需求"></a><strong>需求</strong></h4><ul>
+<li>每个用户的 购物车（cart） 用合适的数据结构缓存在内存中。</li>
+<li>对每个数据对象的访问，合理设置并管理缓存（使用独立的模块读写数据库）。让程序结构变得可管理、可维护。</li>
+<li>对每种商品，设定一个库存。下订单就（假设不需要付款）完成需要减库存。</li>
+<li>将商品详情页面的当前库存采用 ajax延迟加载。</li>
+</ul>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a><strong>实现</strong></h4><ul>
+<li>数据库使用mongodb,同时使用redis将部分数据缓存在内存中</li>
+<li>相关的数据设计<ul>
+<li><img src="http://7xncgn.com1.z0.glb.clouddn.com/16-2-28/68616210.jpg" alt="user"></li>
+<li><img src="http://7xncgn.com1.z0.glb.clouddn.com/16-2-28/2234544.jpg" alt="book"></li>
+<li><img src="http://7xncgn.com1.z0.glb.clouddn.com/16-2-28/44972767.jpg" alt="cart"></li>
+</ul>
+</li>
+<li>代码链接 <a href="https://github.com/sysuKinthon/bookstore/tree/master/bookstore" target="_blank" rel="external">Github</a><h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a><strong>参考链接</strong></h4></li>
+<li>tornado(mongodb与模版): <a href="http://demo.pythoner.com/itt2zh/" target="_blank" rel="external">http://demo.pythoner.com/itt2zh/</a></li>
+<li>redis操作：<a href="https://redis-py.readthedocs.org/en/latest/index.html" target="_blank" rel="external">https://redis-py.readthedocs.org/en/latest/index.html</a></li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Project/">Project</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Web-JS-problem-collection" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -825,127 +899,9 @@
 
 
   
-    <article id="post-Web-env-install" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/26/Web-env-install/" class="article-date">
-  	<time datetime="2016-02-26T13:29:33.000Z" itemprop="datePublished">2016-02-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/26/Web-env-install/">前端学习开发环境</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="ubuntu环境的配置"><a href="#ubuntu环境的配置" class="headerlink" title="ubuntu环境的配置"></a>ubuntu环境的配置</h3><ul>
-<li>mongodb的安装： sudo apt-get install mongodb</li>
-<li><p>node的安装：推荐使用nvm的管理工具，</p>
-<ul>
-<li><p>安装命令如下：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/creationix/nvm.git ~/.nvm</span><br><span class="line"><span class="keyword">cd</span> ~/.nvm</span><br><span class="line">git checkout `git describe --abbrev=<span class="number">0</span> --<span class="keyword">tags</span>`</span><br><span class="line">./install.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>参考 <a href="http://www.clarkhan.com/2015/06/05/linux-install-node-with-nvm/" target="_blank" rel="external">网址3</a></p>
-</li>
-</ul>
-</li>
-<li>另外使用nvm时有时会遇到没有没有权限的问题，修改在.bashrc文件中加入<code>export NVM_DIR = ~/.nvm</code>或是<code>export NVM_DIR=&quot;/home/kinthon/.nvm&quot;
-[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; . &quot;$NVM_DIR/nvm.sh&quot;  # This loads nvm</code>export NODE_PATH=”/home/kinthon/.nvm/versions/node/v5.5.0/lib/node_modules”`</li>
-<li><p>另外需配置NODE_PATH，不然的话，全局安装的东西在文件里面没有办法使用``</p>
-</li>
-<li><p><a href="https://npm.taobao.org/" target="_blank" rel="external">cnpm 安装</a></p>
-</li>
-<li><p>sublime的安装与配置</p>
-<ul>
-<li>直接在<a href="https://www.sublimetext.com/3" target="_blank" rel="external">sublime官网</a>下载安装包，然后双击即可安装，安装完成后subl就可以启动软件了</li>
-<li>插件<ul>
-<li>安装Package Control，<a href="http://my.oschina.net/chinesedragon/blog/160197" target="_blank" rel="external">参考链接</a></li>
-<li>本人目前已安装的插件有<ul>
-<li>Emmet，用于快速编写html</li>
-<li>HTML-CSS-JS Pretty，用于规范化代码分格的</li>
-<li>Babel, 用于转换es6</li>
-<li>CoolFormat： 代码格式化工具</li>
-<li>markdownlighting</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>关于HTML-CSS-JS Pretty插件，其是依靠node来运行的，所以需要指定node的路径，在windows下面的路径形式是<br><code>&quot;windows&quot;: &quot;D:\\program-software\\nodejs\\node.exe</code></li>
-<li>emmet使用 <a href="http://bubkoo.com/2014/01/04/emmet-a-toolkit-for-improving-html-css-workflow/" target="_blank" rel="external">参考</a></li>
-<li><p>关于sublime的一些个配置</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "<span class="attribute">hot_exit</span>": <span class="value"><span class="literal">false</span></span>,</span><br><span class="line">    "<span class="attribute">ignored_packages</span>":</span><br><span class="line">    <span class="value">[</span><br><span class="line">    ]</span>,</span><br><span class="line">    "<span class="attribute">remember_open_files</span>": <span class="value"><span class="literal">false</span></span>,</span><br><span class="line">    "<span class="attribute">tab_size</span>": <span class="value"><span class="number">2</span></span>,</span><br><span class="line">    "<span class="attribute">word_wrap</span>": <span class="value"><span class="literal">true</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>关于build系统</p>
-<ul>
-<li>对于编程人员来说，这是个利器，因为通过这个就可以直接在sublime里面运行代码了，比如我想在这里运行es6的话,本人已经使用npm安装了babel了，直接在Tool-&gt;Build System-&gt;New Build System然后编辑文件如下，然后保存即可</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"working_dir"</span>: <span class="string">"$&#123;project_path:$&#123;folder&#125;&#125;"</span>,</span><br><span class="line">    <span class="string">"selector"</span>: <span class="string">"source.js"</span>,</span><br><span class="line">    <span class="string">"encoding"</span>: <span class="string">"utf-8"</span>,</span><br><span class="line">    <span class="string">"shell"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"windows"</span>: &#123;</span><br><span class="line">        <span class="string">"cmd"</span>: [<span class="string">"taskkill /f /im node.exe &gt;nul 2&gt;nul &amp; babel-node $file"</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"osx"</span>: &#123;</span><br><span class="line">        <span class="string">"cmd"</span>: [<span class="string">"killall node &gt;/dev/null 2&gt;&amp;1; babel-node $file"</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"linux"</span>: &#123;</span><br><span class="line">        <span class="string">"cmd"</span>: [<span class="string">"killall node &gt;/dev/null 2&gt;&amp;1; babel-node $file"</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Chrome<ul>
-<li>ubuntu下安装Chrome也是下载安装包(.deb)就可以了</li>
-<li>Chrome devtool工具的使用参考<a href="http://www.cnblogs.com/wukenaihe/archive/2013/01/27/javascript%E8%B0%83%E8%AF%95.html" target="_blank" rel="external">链接1</a>,<a href="https://developer.chrome.codevtools?hl=dm/" target="_blank" rel="external">链接2</a></li>
-<li>插件<ul>
-<li>ColorZila,用于取色</li>
-<li>Page Ruler,用于衡量页面</li>
-<li>EditThisCookie，用于编辑cookie</li>
-<li>Page load time</li>
-<li>Octotree, 树形展示Github 项目代码</li>
-</ul>
-</li>
-<li>建议弄一个google帐号，因为用帐号登录了Chrome后，它可以帮你记住你的一些标签和使用的插件，这样你重新安装Chrome后，登录它就可以帮你同步标签和插件了</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
     </nav>
   
 </div>

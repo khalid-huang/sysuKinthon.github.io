@@ -4,12 +4,12 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Archives: 2016/8 | Kinthon</title>
+  <title>Kinthon</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Kinthon">
-<meta property="og:url" content="https://sysukinthon.github.io/archives/2016/08/index.html">
+<meta property="og:url" content="https://sysukinthon.github.io/page/7/index.html">
 <meta property="og:site_name" content="Kinthon">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
@@ -191,234 +191,129 @@
 
       <div class="body-wrap">
   
+    <article id="post-Web-env-install" class="article article-type-post" itemscope itemprop="blogPost">
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/16/Web-Node-parse-saz-md/" class="archive-article-date">
-  	<time datetime="2016-08-16T13:09:37.000Z" itemprop="datePublished">Aug 16</time>
+    <div class="article-meta">
+      <a href="/2016/02/26/Web-env-install/" class="article-date">
+  	<time datetime="2016-02-26T13:29:33.000Z" itemprop="datePublished">2016-02-26</time>
 </a>
-        </div>
-    	 
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/16/Web-Node-parse-saz-md/">基于Node实现解析fiddle的saz文件</a>
+      <a class="article-title" href="/2016/02/26/Web-env-install/">前端学习开发环境</a>
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
+      </header>
+      
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/13/Web-mysql-install-md/" class="archive-article-date">
-  	<time datetime="2016-08-13T09:08:16.000Z" itemprop="datePublished">Aug 13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/13/Web-mysql-install-md/">Windows 安装 mysql</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="ubuntu环境的配置"><a href="#ubuntu环境的配置" class="headerlink" title="ubuntu环境的配置"></a>ubuntu环境的配置</h3><ul>
+<li>mongodb的安装： sudo apt-get install mongodb</li>
+<li><p>node的安装：推荐使用nvm的管理工具，</p>
+<ul>
+<li><p>安装命令如下：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/creationix/nvm.git ~/.nvm</span><br><span class="line"><span class="keyword">cd</span> ~/.nvm</span><br><span class="line">git checkout `git describe --abbrev=<span class="number">0</span> --<span class="keyword">tags</span>`</span><br><span class="line">./install.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参考 <a href="http://www.clarkhan.com/2015/06/05/linux-install-node-with-nvm/" target="_blank" rel="external">网址3</a></p>
+</li>
+</ul>
+</li>
+<li>另外使用nvm时有时会遇到没有没有权限的问题，修改在.bashrc文件中加入<code>export NVM_DIR = ~/.nvm</code>或是<code>export NVM_DIR=&quot;/home/kinthon/.nvm&quot;
+[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; . &quot;$NVM_DIR/nvm.sh&quot;  # This loads nvm</code>export NODE_PATH=”/home/kinthon/.nvm/versions/node/v5.5.0/lib/node_modules”`</li>
+<li><p>另外需配置NODE_PATH，不然的话，全局安装的东西在文件里面没有办法使用``</p>
+</li>
+<li><p><a href="https://npm.taobao.org/" target="_blank" rel="external">cnpm 安装</a></p>
+</li>
+<li><p>sublime的安装与配置</p>
+<ul>
+<li>直接在<a href="https://www.sublimetext.com/3" target="_blank" rel="external">sublime官网</a>下载安装包，然后双击即可安装，安装完成后subl就可以启动软件了</li>
+<li>插件<ul>
+<li>安装Package Control，<a href="http://my.oschina.net/chinesedragon/blog/160197" target="_blank" rel="external">参考链接</a></li>
+<li>本人目前已安装的插件有<ul>
+<li>Emmet，用于快速编写html</li>
+<li>HTML-CSS-JS Pretty，用于规范化代码分格的</li>
+<li>Babel, 用于转换es6</li>
+<li>CoolFormat： 代码格式化工具</li>
+<li>markdownlighting</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>关于HTML-CSS-JS Pretty插件，其是依靠node来运行的，所以需要指定node的路径，在windows下面的路径形式是<br><code>&quot;windows&quot;: &quot;D:\\program-software\\nodejs\\node.exe</code></li>
+<li>emmet使用 <a href="http://bubkoo.com/2014/01/04/emmet-a-toolkit-for-improving-html-css-workflow/" target="_blank" rel="external">参考</a></li>
+<li><p>关于sublime的一些个配置</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "<span class="attribute">hot_exit</span>": <span class="value"><span class="literal">false</span></span>,</span><br><span class="line">    "<span class="attribute">ignored_packages</span>":</span><br><span class="line">    <span class="value">[</span><br><span class="line">    ]</span>,</span><br><span class="line">    "<span class="attribute">remember_open_files</span>": <span class="value"><span class="literal">false</span></span>,</span><br><span class="line">    "<span class="attribute">tab_size</span>": <span class="value"><span class="number">2</span></span>,</span><br><span class="line">    "<span class="attribute">word_wrap</span>": <span class="value"><span class="literal">true</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关于build系统</p>
+<ul>
+<li>对于编程人员来说，这是个利器，因为通过这个就可以直接在sublime里面运行代码了，比如我想在这里运行es6的话,本人已经使用npm安装了babel了，直接在Tool-&gt;Build System-&gt;New Build System然后编辑文件如下，然后保存即可</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"working_dir"</span>: <span class="string">"$&#123;project_path:$&#123;folder&#125;&#125;"</span>,</span><br><span class="line">    <span class="string">"selector"</span>: <span class="string">"source.js"</span>,</span><br><span class="line">    <span class="string">"encoding"</span>: <span class="string">"utf-8"</span>,</span><br><span class="line">    <span class="string">"shell"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"windows"</span>: &#123;</span><br><span class="line">        <span class="string">"cmd"</span>: [<span class="string">"taskkill /f /im node.exe &gt;nul 2&gt;nul &amp; babel-node $file"</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"osx"</span>: &#123;</span><br><span class="line">        <span class="string">"cmd"</span>: [<span class="string">"killall node &gt;/dev/null 2&gt;&amp;1; babel-node $file"</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"linux"</span>: &#123;</span><br><span class="line">        <span class="string">"cmd"</span>: [<span class="string">"killall node &gt;/dev/null 2&gt;&amp;1; babel-node $file"</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Chrome<ul>
+<li>ubuntu下安装Chrome也是下载安装包(.deb)就可以了</li>
+<li>Chrome devtool工具的使用参考<a href="http://www.cnblogs.com/wukenaihe/archive/2013/01/27/javascript%E8%B0%83%E8%AF%95.html" target="_blank" rel="external">链接1</a>,<a href="https://developer.chrome.codevtools?hl=dm/" target="_blank" rel="external">链接2</a></li>
+<li>插件<ul>
+<li>ColorZila,用于取色</li>
+<li>Page Ruler,用于衡量页面</li>
+<li>EditThisCookie，用于编辑cookie</li>
+<li>Page load time</li>
+<li>Octotree, 树形展示Github 项目代码</li>
+</ul>
+</li>
+<li>建议弄一个google帐号，因为用帐号登录了Chrome后，它可以帮你记住你的一些标签和使用的插件，这样你重新安装Chrome后，登录它就可以帮你同步标签和插件了</li>
+</ul>
+</li>
+</ul>
 
-        <div class="article-info info-on-right">
-          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+      <div class="clearfix"></div>
+    </div>
+    
   </div>
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/10/Web-regular-expression-table/" class="archive-article-date">
-  	<time datetime="2016-08-10T13:16:04.000Z" itemprop="datePublished">Aug 10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/10/Web-regular-expression-table/">Web_regular_expression_table</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/10/Web-Base-series-two-md/" class="archive-article-date">
-  	<time datetime="2016-08-10T13:13:44.000Z" itemprop="datePublished">Aug 10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/10/Web-Base-series-two-md/">Web基础知识系列二：字符编码整理</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基础知识/">基础知识</a></li></ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/09/Web-HTML-problem-collection-md/" class="archive-article-date">
-  	<time datetime="2016-08-09T12:44:19.000Z" itemprop="datePublished">Aug 9</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/09/Web-HTML-problem-collection-md/">Web HTML 问题收集</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/08/Web-Node-input-file/" class="archive-article-date">
-  	<time datetime="2016-08-08T13:30:49.000Z" itemprop="datePublished">Aug 8</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/08/Web-Node-input-file/">node 上传文件实现</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/">Node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/02/Web-Security-attack-md/" class="archive-article-date">
-  	<time datetime="2016-08-02T09:09:15.000Z" itemprop="datePublished">Aug 2</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/02/Web-Security-attack-md/">web安全之攻击</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Security/">Security</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/">Web</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
+    </nav>
   
-
-    
-
 </div>
       <footer id="footer">
   <div class="outer">
@@ -442,9 +337,9 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: false,
+		isHome: true,
 		isPost: false,
-		isArchive: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false
