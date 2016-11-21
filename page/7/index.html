@@ -119,7 +119,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Browser/" style="font-size: 10px;">Browser</a> <a href="/tags/CG/" style="font-size: 13.33px;">CG</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DL/" style="font-size: 11.67px;">DL</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ML/" style="font-size: 16.67px;">ML</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/NN/" style="font-size: 10px;">NN</a> <a href="/tags/Node/" style="font-size: 15px;">Node</a> <a href="/tags/OpenGL/" style="font-size: 11.67px;">OpenGL</a> <a href="/tags/OpengGL/" style="font-size: 10px;">OpengGL</a> <a href="/tags/Opengl/" style="font-size: 10px;">Opengl</a> <a href="/tags/Others/" style="font-size: 18.33px;">Others</a> <a href="/tags/Project/" style="font-size: 13.33px;">Project</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/基础知识/" style="font-size: 11.67px;">基础知识</a>
+						<a href="/tags/Browser/" style="font-size: 10px;">Browser</a> <a href="/tags/CG/" style="font-size: 14px;">CG</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DL/" style="font-size: 12px;">DL</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ML/" style="font-size: 18px;">ML</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/NN/" style="font-size: 10px;">NN</a> <a href="/tags/Node/" style="font-size: 16px;">Node</a> <a href="/tags/OpenGL/" style="font-size: 12px;">OpenGL</a> <a href="/tags/OpengGL/" style="font-size: 10px;">OpengGL</a> <a href="/tags/Opengl/" style="font-size: 10px;">Opengl</a> <a href="/tags/Others/" style="font-size: 18px;">Others</a> <a href="/tags/Project/" style="font-size: 14px;">Project</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/基础知识/" style="font-size: 12px;">基础知识</a>
 					</div>
 				</section>
 				
@@ -190,6 +190,83 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-git" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/02/27/git/" class="article-date">
+  	<time datetime="2016-02-27T04:39:07.000Z" itemprop="datePublished">2016-02-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/27/git/">Ubuntu下git的使用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
+<h4 id="基本使用-以使用BLOG仓库为例"><a href="#基本使用-以使用BLOG仓库为例" class="headerlink" title="基本使用(以使用BLOG仓库为例)"></a>基本使用(以使用BLOG仓库为例)</h4><ul>
+<li>在github上新建一个仓库 BLOG</li>
+<li>本地git操作<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化配置</span></span><br><span class="line">git init BLOG</span><br><span class="line">git config --global user.name <span class="string">"uesrname"</span></span><br><span class="line">git config --global user.email <span class="string">"email"</span></span><br><span class="line"><span class="comment"># ssh认证 参考: https://segmentfault.com/a/1190000002645623</span></span><br><span class="line"><span class="comment"># 远程关联</span></span><br><span class="line">git remote add origin git@github.com:username/BLOG.git</span><br><span class="line"><span class="comment"># 假设本地已有文件需要上传,相关的命令有</span></span><br><span class="line">git add -A  <span class="comment"># 上传全部文件</span></span><br><span class="line">git commit -m <span class="string">"提交的描述"</span></span><br><span class="line">git push -u origin master </span><br><span class="line">git push origin :huangqinkai //delete the remote branch</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h3><ul>
+<li>git add -f </li>
+<li>git remote rm origin</li>
+<li>git commit -am #其中的-a选项只将所有被修改或者已删除的且已经被git管理的文档提交倒仓库中。如只是修改或者删除了已被Git 管理的文档，是没必要使用git add 命令的</li>
+</ul>
+<ul>
+<li>git pull origin master</li>
+<li>git clone<h3 id="gitignore样本"><a href="#gitignore样本" class="headerlink" title=".gitignore样本"></a>.gitignore样本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">db.json</span><br><span class="line">*.log</span><br><span class="line">node_modules/</span><br><span class="line">public/</span><br><span class="line">.deploy*/</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="使用git-gh-pages进行页面展示"><a href="#使用git-gh-pages进行页面展示" class="headerlink" title="使用git gh-pages进行页面展示"></a>使用git gh-pages进行页面展示</h3><ul>
+<li>新建分支 取名为gh-pages,<code>git checkout -b gh-pages</code></li>
+<li>在gh-pages分支上推上index.html文件，一定要有index.html文件，然后再通过这个文件里面的链接去链接其他的git同分支文件即可</li>
+<li>到github里面的setting下面有一个url，那个就可以访问到相应的内容了。</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Others/">Others</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-hexo-install-blog" class="article article-type-post" itemscope itemprop="blogPost">
   

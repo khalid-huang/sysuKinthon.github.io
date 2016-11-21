@@ -4,14 +4,14 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>caffe的lmdb和mnist集详解 | Kinthon</title>
+  <title>caffe的lmdb | Kinthon</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="本文主要是记录自己在学习caffe的数据库lmdb的过程,会以mnist集的相关代码进行说明；
 
 前提
 要求已经在系统中中成功安装了caffe，可以参考">
 <meta property="og:type" content="article">
-<meta property="og:title" content="caffe的lmdb和mnist集详解">
+<meta property="og:title" content="caffe的lmdb">
 <meta property="og:url" content="https://sysukinthon.github.io/2016/10/28/ML-caffe-lmdb/index.html">
 <meta property="og:site_name" content="Kinthon">
 <meta property="og:description" content="本文主要是记录自己在学习caffe的数据库lmdb的过程,会以mnist集的相关代码进行说明；
@@ -19,9 +19,9 @@
 前提
 要求已经在系统中中成功安装了caffe，可以参考">
 <meta property="og:image" content="http://7xncgn.com1.z0.glb.clouddn.com/16-10-28/52255447.jpg">
-<meta property="og:updated_time" content="2016-11-06T12:23:35.181Z">
+<meta property="og:updated_time" content="2016-11-20T12:43:54.208Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="caffe的lmdb和mnist集详解">
+<meta name="twitter:title" content="caffe的lmdb">
 <meta name="twitter:description" content="本文主要是记录自己在学习caffe的数据库lmdb的过程,会以mnist集的相关代码进行说明；
 
 前提
@@ -130,7 +130,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Browser/" style="font-size: 10px;">Browser</a> <a href="/tags/CG/" style="font-size: 13.33px;">CG</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DL/" style="font-size: 11.67px;">DL</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ML/" style="font-size: 16.67px;">ML</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/NN/" style="font-size: 10px;">NN</a> <a href="/tags/Node/" style="font-size: 15px;">Node</a> <a href="/tags/OpenGL/" style="font-size: 11.67px;">OpenGL</a> <a href="/tags/OpengGL/" style="font-size: 10px;">OpengGL</a> <a href="/tags/Opengl/" style="font-size: 10px;">Opengl</a> <a href="/tags/Others/" style="font-size: 18.33px;">Others</a> <a href="/tags/Project/" style="font-size: 13.33px;">Project</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/基础知识/" style="font-size: 11.67px;">基础知识</a>
+						<a href="/tags/Browser/" style="font-size: 10px;">Browser</a> <a href="/tags/CG/" style="font-size: 14px;">CG</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DL/" style="font-size: 12px;">DL</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ML/" style="font-size: 18px;">ML</a> <a href="/tags/Math/" style="font-size: 10px;">Math</a> <a href="/tags/NN/" style="font-size: 10px;">NN</a> <a href="/tags/Node/" style="font-size: 16px;">Node</a> <a href="/tags/OpenGL/" style="font-size: 12px;">OpenGL</a> <a href="/tags/OpengGL/" style="font-size: 10px;">OpengGL</a> <a href="/tags/Opengl/" style="font-size: 10px;">Opengl</a> <a href="/tags/Others/" style="font-size: 18px;">Others</a> <a href="/tags/Project/" style="font-size: 14px;">Project</a> <a href="/tags/Security/" style="font-size: 10px;">Security</a> <a href="/tags/Web/" style="font-size: 20px;">Web</a> <a href="/tags/基础知识/" style="font-size: 12px;">基础知识</a>
 					</div>
 				</section>
 				
@@ -217,7 +217,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      caffe的lmdb和mnist集详解
+      caffe的lmdb
     </h1>
   
 
@@ -297,7 +297,6 @@
 </ul>
 <ul>
 <li>说明<ul>
-<li>了解mnist数据集</li>
 <li>在第二个执行命令后，我们可以看到在example/mnist目录下多了两个目录，就是我们生成的lmdb文件夹，一个是<code>mnist_test_lmdb</code>,一个是<code>mnist_train_lmdb</code></li>
 <li>我们查看create_mnist.sh文件，可以知道这个shell脚本的过程主要有删除之前之前生成的两个lmdb文件，然后调用caffe/build/examples/mnist目录下的conver_minst_data.bin这个可执行文件，并给其传入3个参数；</li>
 <li>这个二进制文件是怎么生成的，它的源文件在caffe/example/mnist/conver_mnist_data.cpp，我们着重看这个文件<ul>
@@ -382,7 +381,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="ML-caffe-lmdb" data-title="caffe的lmdb和mnist集详解" data-url="https://sysukinthon.github.io/2016/10/28/ML-caffe-lmdb/"></div>
+	<div class="ds-thread" data-thread-key="ML-caffe-lmdb" data-title="caffe的lmdb" data-url="https://sysukinthon.github.io/2016/10/28/ML-caffe-lmdb/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
